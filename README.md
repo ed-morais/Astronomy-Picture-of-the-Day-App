@@ -1,1 +1,1 @@
-# Astronomy-Picture-of-the-Day-App
+# Astronomy Picture of the Day
