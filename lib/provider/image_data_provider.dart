@@ -23,6 +23,7 @@ class ImageDataProvider with ChangeNotifier {
     final Uri urlRequest = Uri.parse(url);
 
     try {
+      _images.clear();
       final http.Response response = await http.get(urlRequest);
       if (response.statusCode == 200) {
         final List<dynamic> body = jsonDecode(response.body);

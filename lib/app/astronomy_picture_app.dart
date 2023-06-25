@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../pages/home_page.dart';
+import '../pages/picture_datail_page.dart';
 import '../provider/image_data_provider.dart';
 import 'config/routes.dart';
 
@@ -24,6 +25,7 @@ class AstronomyPictureApp extends StatelessWidget {
         initialRoute: RoutesApp.home,
         routes: {
           RoutesApp.home: (context) => const HomePage(),
+          RoutesApp.pictureDetailsPage: (context) => const PictureDetailPage(),
         },
       ),
     );

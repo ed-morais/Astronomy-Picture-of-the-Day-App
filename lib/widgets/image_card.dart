@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../app/config/routes.dart';
 import '../models/picture_data.dart';
 
 class ImageCard extends StatelessWidget {
@@ -20,7 +21,9 @@ class ImageCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
       clipBehavior: Clip.hardEdge,
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.of(context).pushNamed(RoutesApp.pictureDetailsPage);
+        },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [

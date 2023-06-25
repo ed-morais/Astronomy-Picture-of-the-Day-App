@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
         // ItemTile(transaction: transactions[index]),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () => providerImage.fetchImages(),
         backgroundColor: Theme.of(context).primaryColor,
         child: const Icon(Icons.refresh),
       ),
