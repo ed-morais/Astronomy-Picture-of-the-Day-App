@@ -16,7 +16,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     final providerImage =
         Provider.of<ImageDataProvider>(context, listen: false);
-    providerImage.loadImages();
+    providerImage.fetchImages();
     super.initState();
   }
 
@@ -44,14 +44,12 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: ListView.builder(
-          shrinkWrap: true,
-          itemCount: providerImage.images.length,
-          itemBuilder: (context, index) =>
-              ImageCard(imageData: providerImage.images[index]),
-          // ItemTile(transaction: transactions[index]),
-        ),
+      body: ListView.builder(
+        shrinkWrap: true,
+        itemCount: providerImage.images.length,
+        itemBuilder: (context, index) =>
+            ImageCard(imageData: providerImage.images[index]),
+        // ItemTile(transaction: transactions[index]),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},

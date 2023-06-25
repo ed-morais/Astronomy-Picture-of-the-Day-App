@@ -15,7 +15,7 @@ class ImageDataProvider with ChangeNotifier {
 
   int quantityImages = 5;
 
-  void loadImages() async {
+  Future<void> fetchImages() async {
     const String apiKey = 'yujInVqEdeqTNc8nJngJPK8voxfofRguhfieZYnp';
     final String url =
         'https://api.nasa.gov/planetary/apod?api_key=$apiKey&count=$quantityImages';
