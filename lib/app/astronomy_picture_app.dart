@@ -17,9 +17,9 @@ class AstronomyPictureApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           colorSchemeSeed: Colors.deepPurpleAccent,
-          useMaterial3: false,
+          useMaterial3: true,
           // cardColor: Colors.deepPurple.shade100
-          // brightness: Brightness.dark,
+          brightness: Brightness.dark,
         ),
         title: 'AstronomyPictureApp',
         initialRoute: RoutesApp.home,

@@ -44,12 +44,15 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body: ListView.builder(
-        shrinkWrap: true,
-        itemCount: providerImage.images.length,
-        itemBuilder: (context, index) =>
-            ImageCard(imageData: providerImage.images[index]),
-        // ItemTile(transaction: transactions[index]),
+      body: RefreshIndicator(
+        onRefresh: providerImage.fetchImages,
+        child: ListView.builder(
+          shrinkWrap: true,
+          itemCount: providerImage.images.length,
+          itemBuilder: (context, index) =>
+              ImageCard(imageData: providerImage.images[index]),
+          // ItemTile(transaction: transactions[index]),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => providerImage.fetchImages(),
