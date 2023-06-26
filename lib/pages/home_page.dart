@@ -15,10 +15,49 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   void initState() {
-    final providerImage =
-        Provider.of<ImageDataProvider>(context, listen: false);
-    providerImage.fetchImages();
+    loadRequest();
     super.initState();
+  }
+
+  loadRequest() async {
+    final provider = Provider.of<ImageDataProvider>(context, listen: false);
+    await provider.fetchImages();
+    if (provider.status != 200) {
+      debugPrint('Error >>>> : ${provider.status}');
+      alertError();
+    }
+  }
+
+  Future<void> reloadRequest() async {
+    final provider = Provider.of<ImageDataProvider>(context, listen: false);
+    provider.clearList();
+    await provider.fetchImages();
+    if (provider.status != 200) {
+      debugPrint('Error >>>>> : ${provider.status}');
+      alertError();
+    }
+  }
+
+  void alertError() {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: ListTile(
+        leading: const Icon(
+          Icons.error,
+          color: Colors.red,
+        ),
+        title: Text(
+          'Sorry, we had trouble loading the app.',
+          style: TextStyle(color: Colors.red.shade300),
+        ),
+      ),
+      duration: const Duration(seconds: 5),
+      action: SnackBarAction(
+        label: 'try again',
+        onPressed: () {
+          reloadRequest();
+        },
+      ),
+    ));
   }
 
   @override
@@ -40,8 +79,7 @@ class _HomePageState extends State<HomePage> {
           ),
           IconButton(
             onPressed: () {
-              providerImage.clearList();
-              providerImage.fetchImages();
+              reloadRequest();
             },
             icon: const Icon(Icons.refresh),
           )
@@ -57,7 +95,7 @@ class _HomePageState extends State<HomePage> {
               child: CircularProgressIndicator(),
             )
           : RefreshIndicator(
-              onRefresh: providerImage.fetchImages,
+              onRefresh: reloadRequest,
               child: ListView.builder(
                 shrinkWrap: true,
                 itemCount: providerImage.images.length,

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:astronomy_picture_app/app/const/const.dart';
 import 'package:flutter/material.dart';
 
 import '../models/picture_data.dart';
@@ -8,6 +9,7 @@ import 'package:http/http.dart' as http;
 class ImageDataProvider with ChangeNotifier {
   final List<ImageData> _images = [];
   int _quantityImages = 5;
+  late int status;
 
   List<ImageData> get images => _images;
 
@@ -24,34 +26,30 @@ class ImageDataProvider with ChangeNotifier {
   }
 
   Future<void> fetchImages() async {
-    _images.clear();
-    const String apiKey = 'yujInVqEdeqTNc8nJngJPK8voxfofRguhfieZYnp';
-    final String url =
-        'https://api.nasa.gov/planetary/apod?api_key=$apiKey&count=$_quantityImages';
+    final Uri url = Uri.parse(
+        'https://api.nasa.gov/planetary/apod?api_key=$kApiKey&count=$_quantityImages');
 
-    final Uri urlRequest = Uri.parse(url);
+    final http.Response response =
+        await http.get(url).timeout(const Duration(seconds: 8), onTimeout: () {
+      return http.Response('Error timeout', 408);
+    });
+    status = response.statusCode;
+    if (response.statusCode == 200) {
+      final List<dynamic> body = jsonDecode(response.body);
 
-    try {
-      final http.Response response = await http.get(urlRequest);
-      if (response.statusCode == 200) {
-        final List<dynamic> body = jsonDecode(response.body);
-
-        for (Map<String, dynamic> elem in body) {
-          _images.add(ImageData(
-            title: elem['title'] ?? "",
-            imageUrl: elem['url'] ??
-                "https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled.png",
-            date: elem['date'] ?? "",
-            explanation: elem['explanation'] ?? "",
-            copyright: elem['copyright'] ?? "Não disponibilizado pela API",
-          ));
-          notifyListeners();
-        }
-      } else {
-        debugPrint('Falha na requisição: ${response.statusCode}');
+      for (Map<String, dynamic> elem in body) {
+        _images.add(ImageData(
+          title: elem['title'] ?? "",
+          imageUrl: elem['url'] ??
+              "https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled.png",
+          date: elem['date'] ?? "",
+          explanation: elem['explanation'] ?? "",
+          copyright: elem['copyright'] ?? "Não disponibilizado pela API",
+        ));
+        notifyListeners();
       }
-    } catch (error) {
-      debugPrint('Erro na requisição: $error');
+    } else {
+      debugPrint('Falha na requisição: ${response.statusCode}');
     }
   }
 }
