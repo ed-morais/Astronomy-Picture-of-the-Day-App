@@ -77,19 +77,23 @@ class _HomePageState extends State<HomePage> {
                 context: context,
                 builder: (context) {
                   return AlertDialog(
-                    title: Text(
+                    title: const Text(
                       'Informations',
                       textAlign: TextAlign.center,
-                      // style: .copyWith(
-                      //   color: Colors.black,
-                      //   fontSize: 40,
-                      // ),
+                    ),
+                    content: const Text(
+                      'Nome: Edilson Morais Brito\n'
+                      'Matrícula: 123456\n\n'
+                      'Nome: Francisco Mendes Magalhães\n'
+                      'Matrícula: 123456\n\n'
+                      'Nome: Tiago da Silva Carvalho\n'
+                      'Matrícula: 123456'
                     ),
                     actions: <Widget>[
                       TextButton(
-                        onPressed: () => Navigator.pop(context, 'EXIT'),
+                        onPressed: () => Navigator.pop(context, 'OK'),
                         child: const Text(
-                          'EXIT',
+                          'OK',
                           style: TextStyle(color: Color(0xff721d43)),
                         ),
                       ),
