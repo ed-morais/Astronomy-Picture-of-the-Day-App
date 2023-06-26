@@ -82,12 +82,15 @@ class _HomePageState extends State<HomePage> {
                       textAlign: TextAlign.center,
                     ),
                     content: const Text(
-                      'Nome: Edilson Morais Brito\n'
-                      'Matrícula: 123456\n\n'
-                      'Nome: Francisco Mendes Magalhães\n'
-                      'Matrícula: 123456\n\n'
-                      'Nome: Tiago da Silva Carvalho\n'
-                      'Matrícula: 123456'
+                      'Name: Edilson Morais Brito\n'
+                      'Email: edilsonmoraisbrito@aluno.uespi\n'
+                      'Registration: 1078234\n\n'
+                      'Name: Francisco Mendes Magalhães\n'
+                      'Email: fmmagalhaesfilho@aluno.uespi\n'
+                      'Registration: 1078256\n\n'
+                      'Name: Tiago da Silva Carvalho\n'
+                      'Email: tdasilvacarvalho@aluno.uespi\n'
+                      'Registration: 1078249'
                     ),
                     actions: <Widget>[
                       TextButton(
