@@ -34,16 +34,16 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.of(context).pushNamed(RoutesApp.settings);
-            },
-            icon: const Icon(Icons.settings),
-          ),
-          IconButton(
-            onPressed: () {
               providerImage.clearList();
               providerImage.fetchImages();
             },
             icon: const Icon(Icons.refresh),
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed(RoutesApp.settings);
+            },
+            icon: const Icon(Icons.settings),
           )
         ],
         shape: const RoundedRectangleBorder(
