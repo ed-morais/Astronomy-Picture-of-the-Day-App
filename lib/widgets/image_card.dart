@@ -5,9 +5,11 @@ import '../models/picture_data.dart';
 
 class ImageCard extends StatelessWidget {
   final ImageData imageData;
+  final int index;
   const ImageCard({
     super.key,
     required this.imageData,
+    required this.index,
   });
 
   @override
@@ -22,7 +24,10 @@ class ImageCard extends StatelessWidget {
       clipBehavior: Clip.hardEdge,
       child: InkWell(
         onTap: () {
-          Navigator.of(context).pushNamed(RoutesApp.pictureDetailsPage);
+          Navigator.of(context).pushNamed(
+            RoutesApp.pictureDetailsPage,
+            arguments: imageData,
+          );
         },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -56,7 +61,7 @@ class ImageCard extends StatelessWidget {
                   //   ),
                   // ),
                   Text(
-                    imageData.title,
+                    '$index. ${imageData.title}',
                     style: const TextStyle(
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold,

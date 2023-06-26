@@ -1,3 +1,4 @@
+import 'package:astronomy_picture_app/app/config/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -26,16 +27,23 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
+        // centerTitle: true,
         title: const Text(
-          'APOD',
+          'Astronomy App',
         ),
         actions: [
           IconButton(
             onPressed: () {
-              debugPrint('clicou');
+              Navigator.of(context).pushNamed(RoutesApp.settings);
             },
             icon: const Icon(Icons.settings),
+          ),
+          IconButton(
+            onPressed: () {
+              providerImage.clearList();
+              providerImage.fetchImages();
+            },
+            icon: const Icon(Icons.refresh),
           )
         ],
         shape: const RoundedRectangleBorder(
@@ -44,21 +52,30 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body: RefreshIndicator(
-        onRefresh: providerImage.fetchImages,
-        child: ListView.builder(
-          shrinkWrap: true,
-          itemCount: providerImage.images.length,
-          itemBuilder: (context, index) =>
-              ImageCard(imageData: providerImage.images[index]),
-          // ItemTile(transaction: transactions[index]),
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => providerImage.fetchImages(),
-        backgroundColor: Theme.of(context).primaryColor,
-        child: const Icon(Icons.refresh),
-      ),
+      body: providerImage.images.isEmpty
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : RefreshIndicator(
+              onRefresh: providerImage.fetchImages,
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: providerImage.images.length,
+                itemBuilder: (context, index) => ImageCard(
+                  imageData: providerImage.images[index],
+                  index: index + 1,
+                ),
+              ),
+            ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     providerImage.clearList();
+      //     providerImage.fetchImages();
+      //   },
+      //   backgroundColor: Theme.of(context).primaryColor,
+      //   child: const Icon(Icons.refresh),
+      // ),
     );
   }
 }
