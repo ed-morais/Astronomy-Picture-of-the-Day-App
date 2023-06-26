@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../provider/image_data_provider.dart';
 import '../widgets/image_card.dart';
+import '../widgets/info_modal.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -76,37 +77,7 @@ class _HomePageState extends State<HomePage> {
               showDialog(
                 context: context,
                 builder: (context) {
-                  return AlertDialog(
-                    title: const Text(
-                      'Information',
-                      textAlign: TextAlign.center,
-                    ),
-                    content: const Column(
-                      crossAxisAlignment:CrossAxisAlignment.start,
-                      children: [
-                        Text('Name: Edilson Morais Brito'),
-                        Text('Email: edilsonmoraisbrito@aluno.uespi'),
-                        Text('Registration: 1078234'),
-                        Divider(color: Colors.purple),
-                        Text('Francisco Mendes Magalhães'),
-                        Text('Email: fmmagalhaesfilho@aluno.uespi'),
-                        Text('Registration: 1078256'),
-                        Divider(color: Colors.purple),
-                        Text('Name: Tiago da Silva Carvalho'),
-                        Text('Email: tdasilvacarvalho@aluno.uespi'),
-                        Text('Registration: 1078249')
-                      ],
-                    ),
-                    actions: <Widget>[
-                      TextButton(
-                        onPressed: () => Navigator.pop(context, 'OK'),
-                        child: const Text(
-                          'OK',
-                          style: TextStyle(color: Colors.purple),
-                        ),
-                      ),
-                    ],
-                  );
+                  return InfoModal();
                 },
               ); 
         },
