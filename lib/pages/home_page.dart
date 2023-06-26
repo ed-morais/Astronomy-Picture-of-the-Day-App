@@ -77,10 +77,10 @@ class _HomePageState extends State<HomePage> {
               showDialog(
                 context: context,
                 builder: (context) {
-                  return InfoModal();
+                  return const InfoModal();
                 },
-              ); 
-        },
+              );
+            },
             icon: const Icon(Icons.group),
           ),
           IconButton(
@@ -113,10 +113,7 @@ class _HomePageState extends State<HomePage> {
             ),
       // floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          providerImage.clearList();
-          providerImage.fetchImages();
-        },
+        onPressed: () => reloadRequest(),
         backgroundColor: Theme.of(context).primaryColor,
         child: const Icon(Icons.refresh),
       ),
