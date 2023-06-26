@@ -81,23 +81,28 @@ class _HomePageState extends State<HomePage> {
                       'Information',
                       textAlign: TextAlign.center,
                     ),
-                    content: const Text(
-                      'Name: Edilson Morais Brito\n'
-                      'Email: edilsonmoraisbrito@aluno.uespi\n'
-                      'Registration: 1078234\n\n'
-                      'Name: Francisco Mendes Magalhães\n'
-                      'Email: fmmagalhaesfilho@aluno.uespi\n'
-                      'Registration: 1078256\n\n'
-                      'Name: Tiago da Silva Carvalho\n'
-                      'Email: tdasilvacarvalho@aluno.uespi\n'
-                      'Registration: 1078249'
+                    content: const Column(
+                      crossAxisAlignment:CrossAxisAlignment.start,
+                      children: [
+                        Text('Name: Edilson Morais Brito'),
+                        Text('Email: edilsonmoraisbrito@aluno.uespi'),
+                        Text('Registration: 1078234'),
+                        Divider(color: Colors.purple),
+                        Text('Francisco Mendes Magalhães'),
+                        Text('Email: fmmagalhaesfilho@aluno.uespi'),
+                        Text('Registration: 1078256'),
+                        Divider(color: Colors.purple),
+                        Text('Name: Tiago da Silva Carvalho'),
+                        Text('Email: tdasilvacarvalho@aluno.uespi'),
+                        Text('Registration: 1078249')
+                      ],
                     ),
                     actions: <Widget>[
                       TextButton(
                         onPressed: () => Navigator.pop(context, 'OK'),
                         child: const Text(
                           'OK',
-                          style: TextStyle(color: Color(0xff721d43)),
+                          style: TextStyle(color: Colors.purple),
                         ),
                       ),
                     ],
