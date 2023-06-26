@@ -73,9 +73,32 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
             onPressed: () {
-              reloadRequest();
-            },
-            icon: const Icon(Icons.refresh),
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    title: Text(
+                      'Informations',
+                      textAlign: TextAlign.center,
+                      // style: .copyWith(
+                      //   color: Colors.black,
+                      //   fontSize: 40,
+                      // ),
+                    ),
+                    actions: <Widget>[
+                      TextButton(
+                        onPressed: () => Navigator.pop(context, 'EXIT'),
+                        child: const Text(
+                          'EXIT',
+                          style: TextStyle(color: Color(0xff721d43)),
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              ); 
+        },
+            icon: const Icon(Icons.group),
           ),
           IconButton(
             onPressed: () {
@@ -106,14 +129,14 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
       // floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {
-      //     providerImage.clearList();
-      //     providerImage.fetchImages();
-      //   },
-      //   backgroundColor: Theme.of(context).primaryColor,
-      //   child: const Icon(Icons.refresh),
-      // ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          providerImage.clearList();
+          providerImage.fetchImages();
+        },
+        backgroundColor: Theme.of(context).primaryColor,
+        child: const Icon(Icons.refresh),
+      ),
     );
   }
 }
