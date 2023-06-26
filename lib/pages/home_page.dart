@@ -78,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                 builder: (context) {
                   return AlertDialog(
                     title: const Text(
-                      'Informations',
+                      'Information',
                       textAlign: TextAlign.center,
                     ),
                     content: const Text(
