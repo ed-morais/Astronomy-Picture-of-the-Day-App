@@ -19,16 +19,16 @@ class InfoModal extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text('Name: Edilson Morais Brito'),
-              const Text('Email: edilsonmoraisbrito@aluno.uespi'),
-              const Text('Registration: 1078234'),
+              const Text('Email: edilsonmoraisbrito@aluno.uespi.br'),
+              const Text('Registration code: 1078234'),
               Divider(color: Colors.purple.shade800),
               const Text('Francisco Mendes Magalhães'),
-              const Text('Email: fmmagalhaesfilho@aluno.uespi'),
-              const Text('Registration: 1078256'),
+              const Text('Email: fmmagalhaesfilho@aluno.uespi.br'),
+              const Text('Registration code: 1078256'),
               Divider(color: Colors.purple.shade800),
               const Text('Name: Tiago da Silva Carvalho'),
-              const Text('Email: tdasilvacarvalho@aluno.uespi'),
-              const Text('Registration: 1078249')
+              const Text('Email: tdasilvacarvalho@aluno.uespi.br'),
+              const Text('Registration code: 1078249')
             ],
           ),
         ),
@@ -36,7 +36,8 @@ class InfoModal extends StatelessWidget {
       actions: <Widget>[
         TextButton(
           style: ButtonStyle(
-              backgroundColor: MaterialStatePropertyAll(Colors.purple.shade800)),
+              backgroundColor:
+                  MaterialStatePropertyAll(Colors.purple.shade800)),
           onPressed: () => Navigator.pop(context, 'OK'),
           child: const Text(
             'OK',
