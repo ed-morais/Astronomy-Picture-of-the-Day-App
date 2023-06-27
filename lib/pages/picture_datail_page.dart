@@ -13,7 +13,7 @@ class PictureDetailPage extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
-          'Detalhes da imagem',
+          'Image details',
         ),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(

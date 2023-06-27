@@ -33,7 +33,7 @@ class _SettingsPageState extends State<SettingsPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
-                  'Quantidade de imagens que deseja exibir:',
+                  'Number of images you want to show:',
                   style: TextStyle(fontSize: 18.0),
                 ),
                 const SizedBox(
