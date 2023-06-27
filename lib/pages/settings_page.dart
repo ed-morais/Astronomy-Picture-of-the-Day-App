@@ -26,7 +26,7 @@ class _SettingsPageState extends State<SettingsPage> {
               showDialog(
                 context: context,
                 builder: (context) {
-                  return const InfoModal();
+                  return const RateModal();
                 },
               );
             },
@@ -77,41 +77,6 @@ class _SettingsPageState extends State<SettingsPage> {
                         },
                       ),
                     ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          Card(
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: SizedBox(
-                height: 130,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      'Select app theme:',
-                      style: TextStyle(fontSize: 18.0),
-                    ),
-                    const SizedBox(
-                      width: 800.0,
-                      height: 20.0,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          "Dark appearence  ",
-                          style: TextStyle(fontSize: 18.0),
-                        ),
-                        Switch(value: isOn, activeColor: Colors.purple.shade800, onChanged: (_isOn){
-                          setState(() {
-                            isOn = _isOn;
-                          });
-                        }),
-                      ],
-                    )
                   ],
                 ),
               ),

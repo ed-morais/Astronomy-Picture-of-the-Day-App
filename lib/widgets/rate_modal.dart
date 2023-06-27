@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-class InfoModal extends StatelessWidget {
-  const InfoModal({
+class RateModal extends StatelessWidget {
+  const RateModal({
     super.key,
   });
 
