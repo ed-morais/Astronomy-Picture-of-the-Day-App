@@ -19,15 +19,15 @@ class InfoModal extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text('Name: Edilson Morais Brito'),
-              const Text('Email: edilsonmoraisbrito@aluno.uespi.br'),
+              const Text('Email: edilsonmoraisbrito@aluno.uespi'),
               const Text('Registration code: 1078234'),
               Divider(color: Colors.purple.shade800),
               const Text('Francisco Mendes Magalhães'),
-              const Text('Email: fmmagalhaesfilho@aluno.uespi.br'),
+              const Text('Email: fmmagalhaesfilho@aluno.uespi'),
               const Text('Registration code: 1078256'),
               Divider(color: Colors.purple.shade800),
               const Text('Name: Tiago da Silva Carvalho'),
-              const Text('Email: tdasilvacarvalho@aluno.uespi.br'),
+              const Text('Email: tdasilvacarvalho@aluno.uespi'),
               const Text('Registration code: 1078249')
             ],
           ),
