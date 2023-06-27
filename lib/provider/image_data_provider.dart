@@ -30,26 +30,30 @@ class ImageDataProvider with ChangeNotifier {
         'https://api.nasa.gov/planetary/apod?api_key=$kApiKey&count=$_quantityImages');
 
     final http.Response response =
-        await http.get(url).timeout(const Duration(seconds: 10), onTimeout: () {
+        await http.get(url).timeout(const Duration(seconds: 7), onTimeout: () {
+      fetchImages();
       return http.Response('Error timeout', 408);
     });
     status = response.statusCode;
     if (response.statusCode == 200) {
+      debugPrint('API VOLTOU COM A RESPOSTA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
       final List<dynamic> body = jsonDecode(response.body);
 
-      for (Map<String, dynamic> elem in body) {
+      final List<Map<String, dynamic>> imageList = List.castFrom(body);
+
+      for (Map<String, dynamic> elem in imageList) {
         _images.add(ImageData(
           title: elem['title'] ?? "",
           imageUrl: elem['url'] ??
               "https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled.png",
           date: elem['date'] ?? "",
           explanation: elem['explanation'] ?? "",
-          copyright: elem['copyright'] ?? "Not available via API",
+          copyright: elem['copyright'] ?? "Não disponibilizado pela API",
         ));
         notifyListeners();
       }
     } else {
-      debugPrint('Request failed: ${response.statusCode}');
+      debugPrint('Unexpected response format ${response.statusCode}');
     }
   }
 }
