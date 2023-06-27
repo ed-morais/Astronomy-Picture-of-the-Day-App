@@ -47,7 +47,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         TextStyle(color: Colors.white, fontSize: 14),
                   ),
                   child: Slider(
-                    activeColor: Colors.purple,
+                    activeColor: Colors.purple.shade800,
                     inactiveColor: const Color.fromARGB(255, 81, 81, 81),
                     value: providerImage.getQuantityImages.toDouble(),
                     min: 1,
