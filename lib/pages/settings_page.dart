@@ -53,6 +53,14 @@ class _SettingsPageState extends State<SettingsPage> {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          final providerImage = Provider.of<ImageDataProvider>(context, listen: true);
+          providerImage.images.clear();
+          providerImage.fetchImages();
+          Navigator.of(context).pop();
+        }, child: Icon(Icons.save),
+      ),
     );
   }
 }

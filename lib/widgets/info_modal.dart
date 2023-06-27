@@ -12,23 +12,25 @@ class InfoModal extends StatelessWidget {
         'Information',
         textAlign: TextAlign.center,
       ),
-      content: Container(
-        height: 230,
-        child: const Column(
-          crossAxisAlignment:CrossAxisAlignment.start,
-          children: [
-            Text('Name: Edilson Morais Brito'),
-            Text('Email: edilsonmoraisbrito@aluno.uespi'),
-            Text('Registration: 1078234'),
-            Divider(color: Colors.purple),
-            Text('Francisco Mendes Magalhães'),
-            Text('Email: fmmagalhaesfilho@aluno.uespi'),
-            Text('Registration: 1078256'),
-            Divider(color: Colors.purple),
-            Text('Name: Tiago da Silva Carvalho'),
-            Text('Email: tdasilvacarvalho@aluno.uespi'),
-            Text('Registration: 1078249')
-          ],
+      content: const SizedBox(
+        height: 210,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Name: Edilson Morais Brito'),
+              Text('Email: edilsonmoraisbrito@aluno.uespi'),
+              Text('Registration: 1078234'),
+              Divider(color: Colors.purple),
+              Text('Francisco Mendes Magalhães'),
+              Text('Email: fmmagalhaesfilho@aluno.uespi'),
+              Text('Registration: 1078256'),
+              Divider(color: Colors.purple),
+              Text('Name: Tiago da Silva Carvalho'),
+              Text('Email: tdasilvacarvalho@aluno.uespi'),
+              Text('Registration: 1078249')
+            ],
+          ),
         ),
       ),
       actions: <Widget>[
