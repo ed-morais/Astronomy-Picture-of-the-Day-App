@@ -30,7 +30,7 @@ class ImageDataProvider with ChangeNotifier {
         'https://api.nasa.gov/planetary/apod?api_key=$kApiKey&count=$_quantityImages');
 
     final http.Response response =
-        await http.get(url).timeout(const Duration(seconds: 8), onTimeout: () {
+        await http.get(url).timeout(const Duration(seconds: 15), onTimeout: () {
       return http.Response('Error timeout', 408);
     });
     status = response.statusCode;
