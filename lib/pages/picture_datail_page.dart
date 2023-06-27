@@ -27,23 +27,11 @@ class PictureDetailPage extends StatelessWidget {
           children: [
             Image.network(
               pictuteDetails.imageUrl,
-              height: 299.9,
               fit: BoxFit.cover,
             ),
-            // String title;
-            // String imageUrl;
-            // String date;
-            // String explanation;
-            // String copyright;
             Card(
-              // margin: EdgeInsets.symmetric(horizontal: 20.0),
               margin: EdgeInsets.zero,
               elevation: 10.0,
-              // shape: RoundedRectangleBorder(
-              //   borderRadius: BorderRadius.only(
-              //       topRight: Radius.circular(50.0),
-              //       bottomLeft: Radius.circular(50.0)),
-              // ),
               child: ClipPath(
                 child: Container(
                   decoration: const BoxDecoration(

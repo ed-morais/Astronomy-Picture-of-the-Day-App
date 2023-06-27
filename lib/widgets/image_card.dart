@@ -50,16 +50,6 @@ class ImageCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  // ListTile(
-                  //   leading: Icon(Icons.fullscreen_exit_sharp),
-                  //   title: Text(
-                  //     'Lembre-se de que o design é uma preferência pessoal',
-                  //     style: TextStyle(
-                  //       fontSize: 18.0,
-                  //       fontWeight: FontWeight.bold,
-                  //     ),
-                  //   ),
-                  // ),
                   Text(
                     '$index. ${imageData.title}',
                     style: const TextStyle(
@@ -71,11 +61,8 @@ class ImageCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Icon(
-                        Icons.date_range,
-                        size: 18.0,
-                        color: Colors.purple.shade800
-                      ),
+                      Icon(Icons.date_range,
+                          size: 25.0, color: Colors.purple.shade800),
                       const SizedBox(width: 5.0),
                       Text(
                         imageData.date,

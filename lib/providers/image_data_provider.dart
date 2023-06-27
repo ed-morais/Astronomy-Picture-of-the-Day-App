@@ -47,7 +47,7 @@ class ImageDataProvider with ChangeNotifier {
           imageUrl: elem['media_type'] == 'video'
               ? "https://i.imgur.com/Vfvinpc.png"
               : elem['url'],
-          date: elem['date'] ?? kDefaulPhrase,
+          date: formatDate(elem['date']) ?? kDefaulPhrase,
           explanation: elem['explanation'] ?? kDefaulPhrase,
           copyright: elem['copyright'] ?? kDefaulPhrase,
         ));
@@ -56,5 +56,18 @@ class ImageDataProvider with ChangeNotifier {
     } else {
       debugPrint('Error response format ${response.statusCode}');
     }
+  }
+
+  String? formatDate(String data) {
+    String isoDate = data;
+    DateTime parsedDate = DateTime.parse(isoDate);
+
+    int year = parsedDate.year;
+    int month = parsedDate.month;
+    int day = parsedDate.day;
+
+    String formattedDate =
+        "${day.toString().padLeft(2, '0')}/${month.toString().padLeft(2, '0')}/$year";
+    return formattedDate;
   }
 }
