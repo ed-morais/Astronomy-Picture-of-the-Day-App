@@ -11,7 +11,7 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  bool isOn = false;
+  bool isOn = true;
   @override
   Widget build(BuildContext context) {
     final providerImage = Provider.of<ImageDataProvider>(context, listen: true);
