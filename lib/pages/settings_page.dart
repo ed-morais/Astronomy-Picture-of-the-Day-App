@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../widgets/rate_modal.dart';
 
 import '../provider/image_data_provider.dart';
@@ -31,7 +30,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 },
               );
             },
-            icon: const Icon(Icons.heart_broken),
+            icon: const Icon(Icons.emoji_emotions_outlined),
           ),
         ],
         shape: const RoundedRectangleBorder(
@@ -113,42 +112,6 @@ class _SettingsPageState extends State<SettingsPage> {
                         }),
                       ],
                     )
-                  ],
-                ),
-              ),
-            ),
-          ),
-          Card(
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: SizedBox(
-                height: 130,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      'Rate the app:',
-                      style: TextStyle(fontSize: 18.0),
-                    ),
-                    const SizedBox(
-                      width: 800.0,
-                      height: 20.0,
-                    ),
-                    RatingBar.builder(
-                      initialRating: 3,
-                      minRating: 1,
-                      direction: Axis.horizontal,
-                      allowHalfRating: true,
-                      itemCount: 5,
-                      itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-                      itemBuilder: (context, _) => Icon(
-                        Icons.star,
-                        color: Colors.purple.shade800,
-                      ),
-                      onRatingUpdate: (rating) {
-                        print(rating);
-                      },
-                    ),
                   ],
                 ),
               ),
