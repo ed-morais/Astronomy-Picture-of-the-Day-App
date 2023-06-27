@@ -43,13 +43,13 @@ class ImageDataProvider with ChangeNotifier {
 
       for (Map<String, dynamic> elem in imageList) {
         _images.add(ImageData(
-          title: elem['title'] ?? "Not available via API",
+          title: elem['title'] ?? kDefaulPhrase,
           imageUrl: elem['media_type'] == 'video'
               ? "https://i.imgur.com/Vfvinpc.png"
               : elem['url'],
-          date: elem['date'] ?? "Not available via API",
-          explanation: elem['explanation'] ?? "Not available via API",
-          copyright: elem['copyright'] ?? "Not available via API",
+          date: elem['date'] ?? kDefaulPhrase,
+          explanation: elem['explanation'] ?? kDefaulPhrase,
+          copyright: elem['copyright'] ?? kDefaulPhrase,
         ));
         notifyListeners();
       }
