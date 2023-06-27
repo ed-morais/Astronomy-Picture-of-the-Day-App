@@ -11,7 +11,7 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  double _currentSliderValue = 5;
+
 
   @override
   Widget build(BuildContext context) {
@@ -48,9 +48,6 @@ class _SettingsPageState extends State<SettingsPage> {
               onChanged: (double value) {
                 debugPrint(value.toInt().toString());
                 providerImage.quantityImages = value.toInt();
-                setState(() {
-                  _currentSliderValue = value;
-                });
               },
             ),
           ],
