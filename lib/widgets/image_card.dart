@@ -71,10 +71,10 @@ class ImageCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      const Icon(
+                      Icon(
                         Icons.date_range,
                         size: 18.0,
-                        color: Colors.grey,
+                        color: Colors.purple.shade800
                       ),
                       const SizedBox(width: 5.0),
                       Text(
