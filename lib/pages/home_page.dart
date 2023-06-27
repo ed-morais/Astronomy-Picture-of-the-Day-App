@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
     await provider.fetchImages();
     if (provider.status != 200) {
       debugPrint('Error >>>> : ${provider.status}');
-      alertError();
+      // alertError();
     }
   }
 
@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
     await provider.fetchImages();
     if (provider.status != 200) {
       debugPrint('Error >>>>> : ${provider.status}');
-      alertError();
+      // alertError();
     }
   }
 
