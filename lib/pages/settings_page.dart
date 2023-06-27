@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../widgets/rate_modal.dart';
 
-import '../provider/image_data_provider.dart';
+import '../providers/image_data_provider.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -12,7 +12,6 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  bool isOn = true;
   @override
   Widget build(BuildContext context) {
     final providerImage = Provider.of<ImageDataProvider>(context, listen: true);
@@ -84,7 +83,6 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
         ],
       ),
-      
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.purple.shade800,
         onPressed: () {

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/rating_app_provider.dart';
 
 class RateModal extends StatelessWidget {
   const RateModal({
@@ -8,6 +11,8 @@ class RateModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double ratingValue = 0.0;
+    final rateProvider = Provider.of<RatingAppProvider>(context, listen: true);
     return AlertDialog(
       title: const Text(
         'Rate the app!',
@@ -23,18 +28,20 @@ class RateModal extends StatelessWidget {
                 height: 10.0,
               ),
               RatingBar.builder(
-                initialRating: 3,
+                initialRating: rateProvider.rate,
                 minRating: 1,
                 direction: Axis.horizontal,
                 allowHalfRating: true,
                 itemCount: 5,
-                itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
                 itemBuilder: (context, _) => Icon(
                   Icons.star,
                   color: Colors.purple.shade800,
                 ),
                 onRatingUpdate: (rating) {
-                  print(rating);
+                  ratingValue = rating;
+
+                  // print(rating);
                 },
               ),
               const Text(
@@ -47,21 +54,24 @@ class RateModal extends StatelessWidget {
       ),
       actions: <Widget>[
         TextButton(
-          onPressed: () => Navigator.pop(context, 'Cancel'),
+          onPressed: () => Navigator.of(context).pop(),
           child: Text(
             'Cancel',
             style: TextStyle(color: Colors.purple.shade800, fontSize: 15.0),
-          ),  
+          ),
         ),
         TextButton(
           style: ButtonStyle(
               backgroundColor:
                   MaterialStatePropertyAll(Colors.purple.shade800)),
-          onPressed: () => Navigator.pop(context, 'OK'),
+          onPressed: () {
+            rateProvider.changeRate(ratingValue);
+            Navigator.of(context).pop();
+          },
           child: const Text(
             'OK',
             style: TextStyle(color: Colors.white),
-          ),  
+          ),
         ),
       ],
     );

@@ -5,7 +5,8 @@ import '../models/picture_data.dart';
 import '../pages/home_page.dart';
 import '../pages/picture_datail_page.dart';
 import '../pages/settings_page.dart';
-import '../provider/image_data_provider.dart';
+import '../providers/image_data_provider.dart';
+import '../providers/rating_app_provider.dart';
 import 'config/routes.dart';
 
 class AstronomyPictureApp extends StatelessWidget {
@@ -13,8 +14,15 @@ class AstronomyPictureApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => ImageDataProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<ImageDataProvider>(
+          create: (_) => ImageDataProvider(),
+        ),
+        ChangeNotifierProvider<RatingAppProvider>(
+          create: (_) => RatingAppProvider(),
+        )
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
