@@ -11,8 +11,6 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-
-
   @override
   Widget build(BuildContext context) {
     final providerImage = Provider.of<ImageDataProvider>(context, listen: true);
@@ -54,12 +52,14 @@ class _SettingsPageState extends State<SettingsPage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          final providerImage = Provider.of<ImageDataProvider>(context, listen: true);
+        onPressed: () {
+          final providerImage =
+              Provider.of<ImageDataProvider>(context, listen: false);
           providerImage.images.clear();
           providerImage.fetchImages();
           Navigator.of(context).pop();
-        }, child: Icon(Icons.save),
+        },
+        child: const Icon(Icons.save),
       ),
     );
   }
