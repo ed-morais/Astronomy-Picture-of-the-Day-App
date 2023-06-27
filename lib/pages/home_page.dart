@@ -23,9 +23,9 @@ class _HomePageState extends State<HomePage> {
   loadRequest() async {
     final provider = Provider.of<ImageDataProvider>(context, listen: false);
     await provider.fetchImages();
-    if (provider.status != 200) {
+    if (provider.status != 200 && provider.status != 408) {
       debugPrint('Error >>>> : ${provider.status}');
-      // alertError();
+      alertError();
     }
   }
 
@@ -33,9 +33,9 @@ class _HomePageState extends State<HomePage> {
     final provider = Provider.of<ImageDataProvider>(context, listen: false);
     provider.clearList();
     await provider.fetchImages();
-    if (provider.status != 200) {
+    if (provider.status != 200 && provider.status != 408) {
       debugPrint('Error >>>>> : ${provider.status}');
-      // alertError();
+      alertError();
     }
   }
 
