@@ -115,7 +115,10 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () => reloadRequest(),
         backgroundColor: Colors.purple.shade800,
-        child: const Icon(Icons.refresh),
+        child: const Icon(
+          Icons.refresh_rounded,
+          size: 30.0,
+        ),
       ),
     );
   }
