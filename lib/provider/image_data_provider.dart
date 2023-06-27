@@ -54,7 +54,7 @@ class ImageDataProvider with ChangeNotifier {
         notifyListeners();
       }
     } else {
-      debugPrint('Unexpected response format ${response.statusCode}');
+      debugPrint('Error response format ${response.statusCode}');
     }
   }
 }

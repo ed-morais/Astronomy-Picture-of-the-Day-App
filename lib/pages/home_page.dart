@@ -1,5 +1,6 @@
 import 'package:astronomy_picture_app/app/config/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/image_data_provider.dart';
@@ -68,8 +69,9 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         // centerTitle: true,
-        title: const Text(
-          'Astronomy App',
+        title: Text(
+          'Cosmic Explorer',
+          style: GoogleFonts.getFont('Play'),
         ),
         actions: [
           IconButton(
