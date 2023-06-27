@@ -45,7 +45,7 @@ class ImageDataProvider with ChangeNotifier {
         _images.add(ImageData(
           title: elem['title'] ?? "Not available via API",
           imageUrl: elem['media_type'] == 'video'
-              ? "https://i.imgur.com/3DiN4VW.png"
+              ? "https://i.imgur.com/Vfvinpc.png"
               : elem['url'],
           date: elem['date'] ?? "Not available via API",
           explanation: elem['explanation'] ?? "Not available via API",
