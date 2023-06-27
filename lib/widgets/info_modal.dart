@@ -12,33 +12,35 @@ class InfoModal extends StatelessWidget {
         'Information',
         textAlign: TextAlign.center,
       ),
-      content: const SizedBox(
+      content: SizedBox(
         height: 210,
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Name: Edilson Morais Brito'),
-              Text('Email: edilsonmoraisbrito@aluno.uespi'),
-              Text('Registration: 1078234'),
-              Divider(color: Colors.purple),
-              Text('Francisco Mendes Magalhães'),
-              Text('Email: fmmagalhaesfilho@aluno.uespi'),
-              Text('Registration: 1078256'),
-              Divider(color: Colors.purple),
-              Text('Name: Tiago da Silva Carvalho'),
-              Text('Email: tdasilvacarvalho@aluno.uespi'),
-              Text('Registration: 1078249')
+              const Text('Name: Edilson Morais Brito'),
+              const Text('Email: edilsonmoraisbrito@aluno.uespi'),
+              const Text('Registration: 1078234'),
+              Divider(color: Colors.purple.shade800),
+              const Text('Francisco Mendes Magalhães'),
+              const Text('Email: fmmagalhaesfilho@aluno.uespi'),
+              const Text('Registration: 1078256'),
+              Divider(color: Colors.purple.shade800),
+              const Text('Name: Tiago da Silva Carvalho'),
+              const Text('Email: tdasilvacarvalho@aluno.uespi'),
+              const Text('Registration: 1078249')
             ],
           ),
         ),
       ),
       actions: <Widget>[
         TextButton(
+          style: ButtonStyle(
+              backgroundColor: MaterialStatePropertyAll(Colors.purple.shade800)),
           onPressed: () => Navigator.pop(context, 'OK'),
           child: const Text(
             'OK',
-            style: TextStyle(color: Colors.purple),
+            style: TextStyle(color: Colors.white),
           ),
         ),
       ],

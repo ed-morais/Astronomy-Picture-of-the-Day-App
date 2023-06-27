@@ -114,7 +114,7 @@ class _HomePageState extends State<HomePage> {
       // floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
       floatingActionButton: FloatingActionButton(
         onPressed: () => reloadRequest(),
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Colors.purple.shade800,
         child: const Icon(Icons.refresh),
       ),
     );

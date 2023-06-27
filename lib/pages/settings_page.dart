@@ -24,38 +24,53 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
         ),
       ),
-      body: Center(
-        child: Column(
-          children: [
-            const Text(
-              'Quantidade de imagens que deseja exibir:',
-              style: TextStyle(fontSize: 18.0),
+      body: Card(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: SizedBox(
+            height: 130,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'Quantidade de imagens que deseja exibir:',
+                  style: TextStyle(fontSize: 18.0),
+                ),
+                const SizedBox(
+                  width: 15.0,
+                  height: 20.0,
+                ),
+                SliderTheme(
+                  data: const SliderThemeData(
+                    valueIndicatorColor: Colors.white,
+                    valueIndicatorTextStyle:
+                        TextStyle(color: Colors.white, fontSize: 14),
+                  ),
+                  child: Slider(
+                    activeColor: Colors.purple,
+                    inactiveColor: const Color.fromARGB(255, 81, 81, 81),
+                    value: providerImage.getQuantityImages.toDouble(),
+                    min: 1,
+                    max: 20,
+                    divisions: 19,
+                    label: providerImage.getQuantityImages.toString(),
+                    onChanged: (double value) {
+                      debugPrint(value.toInt().toString());
+                      providerImage.quantityImages = value.toInt();
+                    },
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(
-              width: 15.0,
-              height: 20.0,
-            ),
-            Slider(
-              activeColor: Colors.purple,
-              inactiveColor: const Color.fromARGB(255, 81, 81, 81),
-              value: providerImage.getQuantityImages.toDouble(),
-              min: 1,
-              max: 20,
-              divisions: 19,
-              label: providerImage.getQuantityImages.toString(),
-              onChanged: (double value) {
-                debugPrint(value.toInt().toString());
-                providerImage.quantityImages = value.toInt();
-              },
-            ),
-          ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.purple.shade800,
         onPressed: () {
           final providerImage =
               Provider.of<ImageDataProvider>(context, listen: false);
-          providerImage.images.clear();
+          providerImage.clearList();
           providerImage.fetchImages();
           Navigator.of(context).pop();
         },
