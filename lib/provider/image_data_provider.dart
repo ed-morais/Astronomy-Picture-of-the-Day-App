@@ -48,7 +48,7 @@ class ImageDataProvider with ChangeNotifier {
               "https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled.png",
           date: elem['date'] ?? "",
           explanation: elem['explanation'] ?? "",
-          copyright: elem['copyright'] ?? "Não disponibilizado pela API",
+          copyright: elem['copyright'] ?? "Not available via API",
         ));
         notifyListeners();
       }
