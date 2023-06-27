@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 
 class ImageDataProvider with ChangeNotifier {
   final List<ImageData> _images = [];
-  int _quantityImages = 5;
+  int _quantityImages = 50;
   late int status;
 
   List<ImageData> get images => _images;
@@ -44,8 +44,8 @@ class ImageDataProvider with ChangeNotifier {
       for (Map<String, dynamic> elem in imageList) {
         _images.add(ImageData(
           title: elem['title'] ?? "",
-          imageUrl: elem['url'] ??
-              "https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-scaled.png",
+          imageUrl: elem['media_type'] == 'video' ? 
+              "https://yt3.googleusercontent.com/ytc/AGIKgqNbSxO39lGezw5tiyMLdAwDOCqIr7vwOlXWoLTAKA=s900-c-k-c0x00ffffff-no-rj" : elem['url'],
           date: elem['date'] ?? "",
           explanation: elem['explanation'] ?? "",
           copyright: elem['copyright'] ?? "Not available via API",
