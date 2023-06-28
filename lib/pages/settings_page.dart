@@ -12,6 +12,16 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+  late int sliderValue;
+
+  @override
+  void initState() {
+    super.initState();
+    final providerImage =
+        Provider.of<ImageDataProvider>(context, listen: false);
+    sliderValue = providerImage.getQuantityImages;
+  }
+
   @override
   Widget build(BuildContext context) {
     final providerImage = Provider.of<ImageDataProvider>(context, listen: true);
@@ -65,14 +75,16 @@ class _SettingsPageState extends State<SettingsPage> {
                       child: Slider(
                         activeColor: Colors.purple.shade800,
                         inactiveColor: const Color.fromARGB(255, 81, 81, 81),
-                        value: providerImage.getQuantityImages.toDouble(),
+                        value: sliderValue.toDouble(),
                         min: 1,
                         max: 20,
                         divisions: 19,
-                        label: providerImage.getQuantityImages.toString(),
+                        label: sliderValue.toString(),
                         onChanged: (double value) {
                           debugPrint(value.toInt().toString());
-                          providerImage.quantityImages = value.toInt();
+                          setState(() {
+                            sliderValue = value.toInt();
+                          });
                         },
                       ),
                     ),
@@ -88,6 +100,7 @@ class _SettingsPageState extends State<SettingsPage> {
         onPressed: () {
           final providerImage =
               Provider.of<ImageDataProvider>(context, listen: false);
+          providerImage.quantityImages = sliderValue;
           providerImage.clearList();
           providerImage.fetchImages();
           Navigator.of(context).pop();
