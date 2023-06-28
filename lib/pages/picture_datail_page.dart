@@ -60,7 +60,7 @@ class PictureDetailPage extends StatelessWidget {
                           trimLines: 3,
                           preDataTextStyle:
                               const TextStyle(fontWeight: FontWeight.w500),
-                          style: const TextStyle(color: Colors.white),
+                          style: TextStyle(color: Theme.of(context).hintColor),
                           colorClickableText: Colors.purple,
                           trimMode: TrimMode.Line,
                           trimCollapsedText: 'Show more',
