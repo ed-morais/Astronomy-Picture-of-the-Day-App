@@ -105,13 +105,19 @@ class _SettingsPageState extends State<SettingsPage> {
                 height: 130,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
+                    const Text(
+                      'Appearance',
+                      style: TextStyle(fontSize: 20.0),
+                    ),
+                    const SizedBox(
+                      height: 15.0,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text(
-                          'Change Theme',
+                          'Dark Theme:',
                           style: TextStyle(fontSize: 18.0),
                         ),
                         const SizedBox(
