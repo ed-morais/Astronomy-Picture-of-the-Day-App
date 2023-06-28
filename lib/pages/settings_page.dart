@@ -129,7 +129,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text(
-                          'Theme:',
+                          'Select theme:',
                           style: TextStyle(fontSize: 18.0),
                         ),
                         const SizedBox(
