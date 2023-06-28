@@ -110,6 +110,7 @@ class _HomePageState extends State<HomePage> {
                 itemBuilder: (context, index) => ImageCard(
                   imageData: providerImage.images[index],
                   index: index + 1,
+                  length: providerImage.images.length,
                 ),
               ),
             ),
@@ -120,6 +121,7 @@ class _HomePageState extends State<HomePage> {
         child: const Icon(
           Icons.refresh_rounded,
           size: 30.0,
+          color: Colors.white,
         ),
       ),
     );

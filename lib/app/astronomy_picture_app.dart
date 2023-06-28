@@ -31,6 +31,7 @@ class AstronomyPictureApp extends StatelessWidget {
               ? ThemeData(
                   colorSchemeSeed: Colors.deepPurpleAccent,
                   useMaterial3: true,
+
                   // hintColor: Colors.white,
 
                   // cardColor: Colors.deepPurple.shade100

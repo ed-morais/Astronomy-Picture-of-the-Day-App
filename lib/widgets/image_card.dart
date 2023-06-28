@@ -6,10 +6,12 @@ import '../models/picture_data.dart';
 class ImageCard extends StatelessWidget {
   final ImageData imageData;
   final int index;
+  final int length;
   const ImageCard({
     super.key,
     required this.imageData,
     required this.index,
+    required this.length,
   });
 
   @override
@@ -20,7 +22,10 @@ class ImageCard extends StatelessWidget {
       ),
       elevation: 5,
       color: Theme.of(context).cardColor,
-      margin: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
+      margin: length > index
+          ? const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0)
+          : const EdgeInsets.only(
+              top: 10.0, left: 15.0, right: 15.0, bottom: 80.0),
       clipBehavior: Clip.hardEdge,
       child: InkWell(
         onTap: () {

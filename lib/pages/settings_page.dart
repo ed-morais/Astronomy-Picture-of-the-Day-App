@@ -171,7 +171,10 @@ class _SettingsPageState extends State<SettingsPage> {
           providerImage.fetchImages();
           Navigator.of(context).pop();
         },
-        child: const Icon(Icons.save),
+        child: const Icon(
+          Icons.save,
+          color: Colors.white,
+        ),
       ),
     );
   }
