@@ -11,8 +11,8 @@ class RateModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double ratingValue = 0.0;
     final rateProvider = Provider.of<RatingAppProvider>(context, listen: true);
+    double ratingValue = rateProvider.rate;
     return AlertDialog(
       title: const Text(
         'Rate the app!',

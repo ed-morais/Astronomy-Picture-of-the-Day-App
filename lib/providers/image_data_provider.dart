@@ -44,9 +44,7 @@ class ImageDataProvider with ChangeNotifier {
       for (Map<String, dynamic> elem in imageList) {
         _images.add(ImageData(
           title: elem['title'] ?? kDefaulPhrase,
-          imageUrl: elem['media_type'] == 'video'
-              ? "https://i.imgur.com/Vfvinpc.png"
-              : elem['url'],
+          imageUrl: elem['media_type'] == 'video' ? kDefaultImage : elem['url'],
           date: formatDate(elem['date']) ?? kDefaulPhrase,
           explanation: elem['explanation'] ?? kDefaulPhrase,
           copyright: elem['copyright'] ?? kDefaulPhrase,
