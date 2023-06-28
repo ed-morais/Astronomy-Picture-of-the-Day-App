@@ -29,7 +29,7 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     Provider.of<ImageDataProvider>(context, listen: true);
-    Provider.of<RatingAppProvider>(context, listen: true);
+    final rateProvider = Provider.of<RatingAppProvider>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -129,9 +129,7 @@ class _SettingsPageState extends State<SettingsPage> {
                           onChanged: (bool value) {
                             setState(() {
                               switchValue = value;
-                              final rateProvider =
-                                  Provider.of<RatingAppProvider>(context,
-                                      listen: false);
+
                               rateProvider.changeTheme(switchValue);
                             });
                           },
