@@ -13,7 +13,7 @@ class InfoModal extends StatelessWidget {
         textAlign: TextAlign.center,
       ),
       content: SizedBox(
-        height: 210,
+        height: 220,
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

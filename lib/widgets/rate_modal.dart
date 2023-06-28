@@ -25,7 +25,7 @@ class RateModal extends StatelessWidget {
             children: [
               const SizedBox(
                 width: 800.0,
-                height: 10.0,
+                height: 7.0,
               ),
               RatingBar.builder(
                 initialRating: rateProvider.rate,
@@ -44,6 +44,9 @@ class RateModal extends StatelessWidget {
                   // print(rating);
                 },
               ),
+              const SizedBox(
+                        height: 10.0,
+                      ),
               const Text(
                 'Thanks for the support',
                 style: TextStyle(fontSize: 18.0),
