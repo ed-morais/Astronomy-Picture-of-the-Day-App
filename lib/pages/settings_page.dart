@@ -95,7 +95,8 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
           ElevatedButton(
             onPressed: () async {
-              var url = Uri.https('linktr.ee', '/misscoding');
+              var url =
+                  Uri.parse('https://www.youtube.com/watch?v=Qc7_zRjH808');
               if (await canLaunchUrl(url)) {
                 await launchUrl(url);
               }
