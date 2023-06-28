@@ -50,6 +50,8 @@ class ImageDataProvider with ChangeNotifier {
           date: formatDate(elem['date']) ?? kDefaulPhrase,
           explanation: elem['explanation'] ?? kDefaulPhrase,
           copyright: elem['copyright'] ?? kDefaulPhrase,
+          mediaType: elem['media_type'] ?? kDefaulPhrase,
+          videoUrl: elem['media_type'] == 'video' ? elem['url'] : '',
         ));
         notifyListeners();
       }

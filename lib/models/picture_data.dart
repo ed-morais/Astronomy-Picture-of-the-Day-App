@@ -4,6 +4,8 @@ class ImageData {
   String date;
   String explanation;
   String copyright;
+  String mediaType;
+  String videoUrl;
 
   ImageData({
     required this.title,
@@ -11,5 +13,7 @@ class ImageData {
     required this.date,
     required this.explanation,
     required this.copyright,
+    required this.mediaType,
+    required this.videoUrl,
   });
 }

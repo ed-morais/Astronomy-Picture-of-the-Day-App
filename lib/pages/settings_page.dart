@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../widgets/rate_modal.dart';
-import 'package:url_launcher/url_launcher.dart';
+
 import '../providers/image_data_provider.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -93,16 +93,6 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
           ),
-          ElevatedButton(
-            onPressed: () async {
-              var url =
-                  Uri.parse('https://www.youtube.com/watch?v=Qc7_zRjH808');
-              if (await canLaunchUrl(url)) {
-                await launchUrl(url);
-              }
-            },
-            child: const Text('Watch on YouTube'),
-          )
         ],
       ),
       floatingActionButton: FloatingActionButton(

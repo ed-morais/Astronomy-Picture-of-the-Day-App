@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 import '../models/picture_data.dart';
 
 class PictureDetailPage extends StatelessWidget {
@@ -76,6 +76,22 @@ class PictureDetailPage extends StatelessWidget {
                 ),
               ),
             ),
+            pictuteDetails.videoUrl != ''
+                ? Container(
+                    margin: const EdgeInsetsDirectional.symmetric(
+                        horizontal: 50.0, vertical: 30.0),
+                    child: ElevatedButton.icon(
+                      onPressed: () async {
+                        var url = Uri.parse(pictuteDetails.videoUrl);
+                        if (await canLaunchUrl(url)) {
+                          await launchUrl(url);
+                        }
+                      },
+                      icon: const Icon(Icons.play_circle),
+                      label: const Text("Play Video "),
+                    ),
+                  )
+                : const Text(''),
           ],
         ),
       ),
