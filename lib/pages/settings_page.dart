@@ -15,6 +15,18 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
   late int sliderValue;
   late bool switchValue;
+  final MaterialStateProperty<Icon?> thumbIcon =
+      MaterialStateProperty.resolveWith<Icon?>(
+    (Set<MaterialState> states) {
+      if (states.contains(MaterialState.selected)) {
+        return const Icon(Icons.dark_mode);
+      }
+      return const Icon(
+        Icons.light_mode,
+        color: Colors.yellow,
+      );
+    },
+  );
   @override
   void initState() {
     super.initState();
@@ -117,7 +129,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text(
-                          'Dark Theme:',
+                          'Theme:',
                           style: TextStyle(fontSize: 18.0),
                         ),
                         const SizedBox(
@@ -125,6 +137,7 @@ class _SettingsPageState extends State<SettingsPage> {
                           height: 20.0,
                         ),
                         Switch(
+                          thumbIcon: thumbIcon,
                           value: switchValue,
                           onChanged: (bool value) {
                             setState(() {
