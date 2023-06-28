@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../providers/rating_app_provider.dart';
 import '../widgets/rate_modal.dart';
 
 import '../providers/image_data_provider.dart';
@@ -13,18 +14,22 @@ class SettingsPage extends StatefulWidget {
 
 class _SettingsPageState extends State<SettingsPage> {
   late int sliderValue;
-
+  late bool switchValue;
   @override
   void initState() {
     super.initState();
     final providerImage =
         Provider.of<ImageDataProvider>(context, listen: false);
     sliderValue = providerImage.getQuantityImages;
+
+    final rateProvider = Provider.of<RatingAppProvider>(context, listen: false);
+    switchValue = rateProvider.isDark;
   }
 
   @override
   Widget build(BuildContext context) {
     Provider.of<ImageDataProvider>(context, listen: true);
+    Provider.of<RatingAppProvider>(context, listen: true);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -93,14 +98,54 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
           ),
+          Card(
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: SizedBox(
+                height: 130,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          'Change Theme',
+                          style: TextStyle(fontSize: 18.0),
+                        ),
+                        const SizedBox(
+                          width: 15.0,
+                          height: 20.0,
+                        ),
+                        Switch(
+                          value: switchValue,
+                          onChanged: (bool value) {
+                            setState(() {
+                              switchValue = value;
+                            });
+                          },
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.purple.shade800,
         onPressed: () {
+          final rateProvider =
+              Provider.of<RatingAppProvider>(context, listen: false);
+          rateProvider.changeTheme(switchValue);
+
           final providerImage =
               Provider.of<ImageDataProvider>(context, listen: false);
           providerImage.quantityImages = sliderValue;
+
           providerImage.clearList();
           providerImage.fetchImages();
           Navigator.of(context).pop();

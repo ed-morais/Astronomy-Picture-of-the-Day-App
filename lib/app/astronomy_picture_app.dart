@@ -23,26 +23,36 @@ class AstronomyPictureApp extends StatelessWidget {
           create: (_) => RatingAppProvider(),
         )
       ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          colorSchemeSeed: Colors.deepPurpleAccent,
-          useMaterial3: true,
-          // cardColor: Colors.deepPurple.shade100
-          brightness: Brightness.dark,
-        ),
-        title: 'AstronomyPictureApp',
-        initialRoute: RoutesApp.home,
-        routes: {
-          RoutesApp.home: (context) => const HomePage(),
-          RoutesApp.pictureDetailsPage: (context) {
-            final pictuteDetails =
-                ModalRoute.of(context)?.settings.arguments as ImageData;
-            return PictureDetailPage(pictuteDetails: pictuteDetails);
+      child: Consumer<RatingAppProvider>(
+          builder: (context, RatingAppProvider ratingAppProvider, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ratingAppProvider.isDark
+              ? ThemeData(
+                  colorSchemeSeed: Colors.deepPurpleAccent,
+                  useMaterial3: true,
+                  // cardColor: Colors.deepPurple.shade100
+                  brightness: Brightness.dark,
+                )
+              : ThemeData(
+                  colorSchemeSeed: Colors.deepPurpleAccent,
+                  useMaterial3: true,
+                  // cardColor: Colors.deepPurple.shade100
+                  brightness: Brightness.light,
+                ),
+          title: 'AstronomyPictureApp',
+          initialRoute: RoutesApp.home,
+          routes: {
+            RoutesApp.home: (context) => const HomePage(),
+            RoutesApp.pictureDetailsPage: (context) {
+              final pictuteDetails =
+                  ModalRoute.of(context)?.settings.arguments as ImageData;
+              return PictureDetailPage(pictuteDetails: pictuteDetails);
+            },
+            RoutesApp.settings: (context) => const SettingsPage(),
           },
-          RoutesApp.settings: (context) => const SettingsPage(),
-        },
-      ),
+        );
+      }),
     );
   }
 }
