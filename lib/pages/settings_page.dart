@@ -23,7 +23,7 @@ class _SettingsPageState extends State<SettingsPage> {
       }
       return const Icon(
         Icons.light_mode,
-        color: Colors.yellow,
+        color: Colors.white,
       );
     },
   );
