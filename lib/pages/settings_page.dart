@@ -65,96 +65,98 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
         ),
       ),
-      body: Column(
-        children: [
-          Card(
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: SizedBox(
-                height: 130,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      'Number of images you want to show:',
-                      style: TextStyle(fontSize: 18.0),
-                    ),
-                    const SizedBox(
-                      width: 15.0,
-                      height: 20.0,
-                    ),
-                    SliderTheme(
-                      data: const SliderThemeData(
-                        valueIndicatorColor: Colors.white,
-                        valueIndicatorTextStyle:
-                            TextStyle(color: Colors.white, fontSize: 14),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: SizedBox(
+                  height: 130,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        'Number of images you want to show:',
+                        style: TextStyle(fontSize: 18.0),
                       ),
-                      child: Slider(
-                        activeColor: Colors.purple.shade800,
-                        inactiveColor: const Color.fromARGB(255, 81, 81, 81),
-                        value: sliderValue.toDouble(),
-                        min: 1,
-                        max: 20,
-                        divisions: 19,
-                        label: sliderValue.toString(),
-                        onChanged: (double value) {
-                          debugPrint(value.toInt().toString());
-                          setState(() {
-                            sliderValue = value.toInt();
-                          });
-                        },
+                      const SizedBox(
+                        width: 15.0,
+                        height: 20.0,
                       ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          Card(
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: SizedBox(
-                height: 130,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      'Appearance',
-                      style: TextStyle(fontSize: 20.0),
-                    ),
-                    const SizedBox(
-                      height: 15.0,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          'Select theme:',
-                          style: TextStyle(fontSize: 18.0),
+                      SliderTheme(
+                        data: const SliderThemeData(
+                          valueIndicatorColor: Colors.white,
+                          valueIndicatorTextStyle:
+                              TextStyle(color: Colors.white, fontSize: 14),
                         ),
-                        const SizedBox(
-                          width: 15.0,
-                          height: 20.0,
-                        ),
-                        Switch(
-                          thumbIcon: thumbIcon,
-                          value: switchValue,
-                          onChanged: (bool value) {
+                        child: Slider(
+                          activeColor: Colors.purple.shade800,
+                          inactiveColor: const Color.fromARGB(255, 81, 81, 81),
+                          value: sliderValue.toDouble(),
+                          min: 1,
+                          max: 20,
+                          divisions: 19,
+                          label: sliderValue.toString(),
+                          onChanged: (double value) {
+                            debugPrint(value.toInt().toString());
                             setState(() {
-                              switchValue = value;
-
-                              rateProvider.changeTheme(switchValue);
+                              sliderValue = value.toInt();
                             });
                           },
                         ),
-                      ],
-                    )
-                  ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: SizedBox(
+                  height: 130,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        'Appearance',
+                        style: TextStyle(fontSize: 20.0),
+                      ),
+                      const SizedBox(
+                        height: 15.0,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            'Select theme:',
+                            style: TextStyle(fontSize: 18.0),
+                          ),
+                          const SizedBox(
+                            width: 15.0,
+                            height: 20.0,
+                          ),
+                          Switch(
+                            thumbIcon: thumbIcon,
+                            value: switchValue,
+                            onChanged: (bool value) {
+                              setState(() {
+                                switchValue = value;
+      
+                                rateProvider.changeTheme(switchValue);
+                              });
+                            },
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.purple.shade800,
