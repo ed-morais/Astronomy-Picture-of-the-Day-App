@@ -123,6 +123,10 @@ class _SettingsPageState extends State<SettingsPage> {
                           onChanged: (bool value) {
                             setState(() {
                               switchValue = value;
+                              final rateProvider =
+                                  Provider.of<RatingAppProvider>(context,
+                                      listen: false);
+                              rateProvider.changeTheme(switchValue);
                             });
                           },
                         ),
