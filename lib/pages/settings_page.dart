@@ -24,7 +24,7 @@ class _SettingsPageState extends State<SettingsPage> {
 
   @override
   Widget build(BuildContext context) {
-    final providerImage = Provider.of<ImageDataProvider>(context, listen: true);
+    Provider.of<ImageDataProvider>(context, listen: true);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
