@@ -31,11 +31,7 @@ class _PictureDetailPageState extends State<PictureDetailPage> {
     setState(() {
       final index = providerImage.favorites
           .indexWhere((element) => widget.pictuteDetails.date == element.date);
-      if (index == -1) {
-        isFavorite = false;
-      } else {
-        isFavorite = true;
-      }
+      index == -1 ? isFavorite = false : isFavorite = true;
     });
   }
 
@@ -46,11 +42,9 @@ class _PictureDetailPageState extends State<PictureDetailPage> {
       if (index == -1) {
         providerImage.addFavoritesImages(widget.pictuteDetails);
         isFavorite = true;
-        // providerImage.isFavorite = true;
       } else {
         providerImage.removeFavoritesImages(index);
         isFavorite = false;
-        // providerImage.isFavorite = false;
       }
     });
   }
