@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
         ),
         title: Text(
           'Sorry, we had trouble loading the app.',
-          style: TextStyle(color: Colors.red.shade300),
+          style: TextStyle(color: Colors.red.shade300, fontSize: 20.0),
         ),
       ),
       duration: const Duration(seconds: 5),
@@ -74,6 +74,12 @@ class _HomePageState extends State<HomePage> {
           style: GoogleFonts.getFont('Play'),
         ),
         actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed(RoutesApp.favorites);
+            },
+            icon: const Icon(Icons.favorite),
+          ),
           IconButton(
             onPressed: () {
               showDialog(
