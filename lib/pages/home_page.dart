@@ -106,14 +106,14 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: SpeedDial(
         animatedIcon: AnimatedIcons.menu_close,
         backgroundColor: Colors.purple.shade800,
-        overlayOpacity: 0.6,
+        overlayOpacity: 0.7,
         spacing: 10,
         spaceBetweenChildren: 10,
         children: [
           SpeedDialChild(
             child: const Icon(Icons.group),
             label: 'Information',
-            backgroundColor: Colors.purple.shade700,
+            // backgroundColor: Colors.purple.shade700,
             onTap: () {
               showDialog(
                 context: context,
@@ -126,7 +126,7 @@ class _HomePageState extends State<HomePage> {
           SpeedDialChild(
             child: const Icon(Icons.star),
             label: 'Favorites',
-            backgroundColor: Colors.purple.shade700,
+            // backgroundColor: Colors.purple.shade700,
             onTap: () {
               Navigator.of(context).pushNamed(RoutesApp.favorites);
             },
@@ -134,7 +134,7 @@ class _HomePageState extends State<HomePage> {
           SpeedDialChild(
             child: const Icon(Icons.settings),
             label: 'Settings',
-            backgroundColor: Colors.purple.shade700,
+            // backgroundColor: Colors.purple.shade700,
             onTap: () {
               Navigator.of(context).pushNamed(RoutesApp.settings);
             },

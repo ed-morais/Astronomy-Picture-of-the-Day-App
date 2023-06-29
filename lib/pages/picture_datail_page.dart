@@ -122,7 +122,7 @@ class _PictureDetailPageState extends State<PictureDetailPage> {
             widget.pictuteDetails.videoUrl != ''
                 ? Container(
                     margin: const EdgeInsetsDirectional.symmetric(
-                        horizontal: 50.0, vertical: 30.0),
+                        horizontal: 110.0, vertical: 30.0),
                     child: ElevatedButton.icon(
                       onPressed: () async {
                         var url = Uri.parse(widget.pictuteDetails.videoUrl);
@@ -139,6 +139,7 @@ class _PictureDetailPageState extends State<PictureDetailPage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.purple.shade800,
         onPressed: () => toggleFavorite(providerImage),
         child: isFavorite
             ? const Icon(Icons.favorite)
