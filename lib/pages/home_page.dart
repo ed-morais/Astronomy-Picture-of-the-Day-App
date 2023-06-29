@@ -2,6 +2,7 @@ import 'package:astronomy_picture_app/app/config/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
 import '../providers/image_data_provider.dart';
 import '../widgets/image_card.dart';
@@ -75,27 +76,8 @@ class _HomePageState extends State<HomePage> {
         ),
         actions: [
           IconButton(
-            onPressed: () {
-              Navigator.of(context).pushNamed(RoutesApp.favorites);
-            },
-            icon: const Icon(Icons.favorite),
-          ),
-          IconButton(
-            onPressed: () {
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return const InfoModal();
-                },
-              );
-            },
-            icon: const Icon(Icons.group),
-          ),
-          IconButton(
-            onPressed: () {
-              Navigator.of(context).pushNamed(RoutesApp.settings);
-            },
-            icon: const Icon(Icons.settings),
+            onPressed: () => reloadRequest(),
+            icon: const Icon(Icons.refresh_rounded),
           )
         ],
         shape: const RoundedRectangleBorder(
@@ -121,14 +103,43 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
       // floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => reloadRequest(),
+      floatingActionButton: SpeedDial(
+        animatedIcon: AnimatedIcons.menu_close,
         backgroundColor: Colors.purple.shade800,
-        child: const Icon(
-          Icons.refresh_rounded,
-          size: 30.0,
-          color: Colors.white,
-        ),
+        overlayOpacity: 0.6,
+        spacing: 10,
+        spaceBetweenChildren: 10,
+        children: [
+          SpeedDialChild(
+            child: const Icon(Icons.group),
+            label: 'Information',
+            backgroundColor: Colors.purple.shade700,
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return const InfoModal();
+                },
+              ); 
+            },
+          ),
+          SpeedDialChild(
+            child: const Icon(Icons.star),
+            label: 'Favorites',
+            backgroundColor: Colors.purple.shade700,
+            onTap: () {
+              Navigator.of(context).pushNamed(RoutesApp.favorites);
+            },
+          ),
+          SpeedDialChild(
+            child: const Icon(Icons.settings),
+            label: 'Settings',
+            backgroundColor: Colors.purple.shade700,
+            onTap: () {
+              Navigator.of(context).pushNamed(RoutesApp.settings);
+            },
+          ),
+        ],
       ),
     );
   }
