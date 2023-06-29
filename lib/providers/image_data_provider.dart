@@ -1,16 +1,15 @@
 import 'dart:convert';
-
+import 'package:http/http.dart' as http;
 import 'package:astronomy_picture_app/app/const/const.dart';
 import 'package:flutter/material.dart';
-
 import '../models/picture_data.dart';
-import 'package:http/http.dart' as http;
 
 class ImageDataProvider with ChangeNotifier {
   final List<ImageData> _images = [];
+  final List<ImageData> favorites = [];
   int _quantityImages = 5;
-  late int status;
 
+  late int status;
   List<ImageData> get images => _images;
 
   int get getQuantityImages => _quantityImages;
@@ -28,7 +27,6 @@ class ImageDataProvider with ChangeNotifier {
   Future<void> fetchImages() async {
     final Uri url = Uri.parse(
         'https://api.nasa.gov/planetary/apod?api_key=$kApiKey&count=$_quantityImages');
-
     final http.Response response =
         await http.get(url).timeout(const Duration(seconds: 7), onTimeout: () {
       fetchImages();
@@ -69,5 +67,15 @@ class ImageDataProvider with ChangeNotifier {
     String formattedDate =
         "${day.toString().padLeft(2, '0')}/${month.toString().padLeft(2, '0')}/$year";
     return formattedDate;
+  }
+
+  void addFavoritesImages(ImageData image) {
+    favorites.add(image);
+    notifyListeners();
+  }
+
+  void removeFavoritesImages(int index) {
+    favorites.removeAt(index);
+    notifyListeners();
   }
 }

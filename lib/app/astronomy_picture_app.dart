@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../models/picture_data.dart';
+import '../pages/favorites_page.dart';
 import '../pages/home_page.dart';
 import '../pages/picture_datail_page.dart';
 import '../pages/settings_page.dart';
@@ -54,6 +55,7 @@ class AstronomyPictureApp extends StatelessWidget {
               return PictureDetailPage(pictuteDetails: pictuteDetails);
             },
             RoutesApp.settings: (context) => const SettingsPage(),
+            RoutesApp.favorites: (context) => const FavoritesPage(),
           },
         );
       }),
