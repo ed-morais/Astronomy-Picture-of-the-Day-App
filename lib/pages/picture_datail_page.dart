@@ -142,8 +142,8 @@ class _PictureDetailPageState extends State<PictureDetailPage> {
         backgroundColor: Colors.purple.shade800,
         onPressed: () => toggleFavorite(providerImage),
         child: isFavorite
-            ? const Icon(Icons.favorite)
-            : const Icon(Icons.favorite_outline),
+            ? const Icon(Icons.favorite, color: Colors.white,)
+            : const Icon(Icons.favorite_outline, color: Colors.white),
       ),
     );
   }
