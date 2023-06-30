@@ -149,14 +149,14 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
               ),
             ),
-            ElevatedButton.icon(        
+            ElevatedButton.icon(
               onPressed: () {
                 showDialog(
-                context: context,
-                builder: (context) {
-                  return const RestaureModal();
-                },
-              );
+                  context: context,
+                  builder: (context) {
+                    return const RestaureModal();
+                  },
+                );
               },
               style: ButtonStyle(
                 backgroundColor:

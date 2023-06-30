@@ -14,7 +14,7 @@ class ConfigAppProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void changeTheme(value) {
+  void changeTheme(bool value) {
     _isDark = value;
     notifyListeners();
   }
