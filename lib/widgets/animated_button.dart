@@ -18,6 +18,9 @@ class AnimatedButton extends StatelessWidget {
       overlayColor: Colors.black,
       overlayOpacity: 0.7,
       spacing: 10,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(15.0)),
+      ),
       spaceBetweenChildren: 10,
       children: [
         SpeedDialChild(
