@@ -124,7 +124,7 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
             ConfigCard(
-              title: 'Details Palette',
+              title: 'Palette Details',
               body: Container(
                 padding: EdgeInsets.symmetric(horizontal: 60),
                 child: ElevatedButton(
