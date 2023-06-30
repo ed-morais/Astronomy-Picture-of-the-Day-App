@@ -4,6 +4,7 @@ import '../providers/config_app_provider.dart';
 import '../widgets/color_picker_modal.dart';
 import '../widgets/config_card.dart';
 import '../widgets/rate_modal.dart';
+import '../widgets/restaure_modal.dart';
 
 import '../providers/image_data_provider.dart';
 
@@ -141,6 +142,28 @@ class _SettingsPageState extends State<SettingsPage> {
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
+              ),
+            ),
+            ElevatedButton.icon(        
+              onPressed: () {
+                showDialog(
+                context: context,
+                builder: (context) {
+                  return const RestaureModal();
+                },
+              );
+              },
+              style: ButtonStyle(
+                backgroundColor:
+                    MaterialStatePropertyAll(Theme.of(context).primaryColor),
+              ),
+              icon: const Icon(
+                Icons.build_circle,
+                color: Colors.white,
+              ),
+              label: const Text(
+                "Reset",
+                style: TextStyle(color: Colors.white),
               ),
             ),
           ],
