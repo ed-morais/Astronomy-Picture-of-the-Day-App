@@ -9,7 +9,7 @@
         </intent>
     </queries>
     <application
-        android:label="astronomy_picture_app"
+        android:label="Cosmic Explorer"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
