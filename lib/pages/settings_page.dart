@@ -16,7 +16,6 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
   late int sliderValue;
   late bool switchValue;
-  late ImageDataProvider providerImage;
   final MaterialStateProperty<Icon?> thumbIcon =
       MaterialStateProperty.resolveWith<Icon?>(
     (Set<MaterialState> states) {
@@ -33,7 +32,8 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   void initState() {
     super.initState();
-    providerImage = Provider.of<ImageDataProvider>(context, listen: false);
+    final providerImage =
+        Provider.of<ImageDataProvider>(context, listen: false);
     sliderValue = providerImage.getQuantityImages;
 
     final configApp = Provider.of<ConfigAppProvider>(context, listen: false);
@@ -125,7 +125,8 @@ class _SettingsPageState extends State<SettingsPage> {
         backgroundColor: Colors.purple.shade800,
         onPressed: () {
           configApp.changeTheme(switchValue);
-
+          final providerImage =
+              Provider.of<ImageDataProvider>(context, listen: false);
           providerImage.quantityImages = sliderValue;
           providerImage.clearList();
           providerImage.fetchImages();

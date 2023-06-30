@@ -146,7 +146,10 @@ class _PictureDetailPageState extends State<PictureDetailPage> {
                 Icons.bookmarks,
                 color: Colors.white,
               )
-            : const Icon(Icons.bookmarks_outlined, color: Colors.white),
+            : const Icon(
+                Icons.bookmarks_outlined,
+                color: Colors.white,
+              ),
       ),
     );
   }

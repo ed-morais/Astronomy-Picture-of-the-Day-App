@@ -66,6 +66,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final providerImage = Provider.of<ImageDataProvider>(context, listen: true);
+    final images = providerImage.images;
 
     return Scaffold(
       appBar: AppBar(
@@ -86,7 +87,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body: providerImage.images.isEmpty
+      body: images.isEmpty
           ? const Center(
               child: CircularProgressIndicator(),
             )
@@ -94,11 +95,11 @@ class _HomePageState extends State<HomePage> {
               onRefresh: reloadRequest,
               child: ListView.builder(
                 shrinkWrap: true,
-                itemCount: providerImage.images.length,
+                itemCount: images.length,
                 itemBuilder: (context, index) => ImageCard(
-                  imageData: providerImage.images[index],
+                  imageData: images[index],
                   index: index + 1,
-                  length: providerImage.images.length,
+                  length: images.length,
                 ),
               ),
             ),
