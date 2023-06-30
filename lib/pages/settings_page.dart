@@ -48,7 +48,7 @@ class _SettingsPageState extends State<SettingsPage> {
 
   @override
   Widget build(BuildContext context) {
-    Provider.of<ImageDataProvider>(context, listen: true);
+    final imageProvider = Provider.of<ImageDataProvider>(context, listen: true);
     final configApp = Provider.of<ConfigAppProvider>(context, listen: true);
     return Scaffold(
       appBar: AppBar(
@@ -154,7 +154,10 @@ class _SettingsPageState extends State<SettingsPage> {
                 showDialog(
                   context: context,
                   builder: (context) {
-                    return const RestaureModal();
+                    return RestaureModal(
+                      imageProvider: imageProvider,
+                      configApp: configApp,
+                    );
                   },
                 );
               },

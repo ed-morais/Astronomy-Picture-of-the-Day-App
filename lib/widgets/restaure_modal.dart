@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../providers/config_app_provider.dart';
 import '../providers/image_data_provider.dart';
 
 class RestaureModal extends StatelessWidget {
-  // provider image
+  final ImageDataProvider imageProvider;
+  final ConfigAppProvider configApp;
   const RestaureModal({
     super.key,
+    required this.imageProvider,
+    required this.configApp,
   });
 
   @override
@@ -45,29 +47,15 @@ class RestaureModal extends StatelessWidget {
               backgroundColor:
                   MaterialStatePropertyAll(Theme.of(context).primaryColor)),
           onPressed: () {
-            final providerImage =
-                Provider.of<ImageDataProvider>(context, listen: false);
-            final configApp =
-                Provider.of<ConfigAppProvider>(context, listen: false);
-
-            providerImage.quantityImages = 5;
-            providerImage.clearList();
-            providerImage.fetchImages();
+            imageProvider.quantityImages = 5;
+            imageProvider.clearList();
+            imageProvider.fetchImages();
             configApp.changeTheme(true);
             configApp.changeColor(Colors.purple.shade800);
 
             Navigator.pop(context, 'Confirm');
             Navigator.of(context).pop();
           },
-          // onPressed: () {
-          //   configApp.changeTheme(switchValue);
-
-          //   final providerImage =
-          //       Provider.of<ImageDataProvider>(context, listen: false);
-          //   providerImage.quantityImages = sliderValue;
-          //   providerImage.clearList();
-          //   providerImage.fetchImages();
-          // },
           child: const Text(
             'Confirm',
             style: TextStyle(color: Colors.white),

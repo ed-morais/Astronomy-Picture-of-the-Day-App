@@ -7,7 +7,7 @@ class ColorPickerDialog extends StatefulWidget {
   const ColorPickerDialog({super.key});
 
   @override
-  _ColorPickerDialogState createState() => _ColorPickerDialogState();
+  State<ColorPickerDialog> createState() => _ColorPickerDialogState();
 }
 
 class _ColorPickerDialogState extends State<ColorPickerDialog> {
