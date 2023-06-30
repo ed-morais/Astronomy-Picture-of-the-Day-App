@@ -36,7 +36,7 @@ class RateModal extends StatelessWidget {
                 itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
                 itemBuilder: (context, _) => Icon(
                   Icons.star,
-                  color: Colors.purple.shade800,
+                  color: Theme.of(context).primaryColor,
                 ),
                 onRatingUpdate: (rating) {
                   ratingValue = rating;
@@ -60,13 +60,14 @@ class RateModal extends StatelessWidget {
           onPressed: () => Navigator.of(context).pop(),
           child: Text(
             'Cancel',
-            style: TextStyle(color: Colors.purple.shade800, fontSize: 15.0),
+            style: TextStyle(
+                color: Theme.of(context).primaryColor, fontSize: 15.0),
           ),
         ),
         TextButton(
           style: ButtonStyle(
               backgroundColor:
-                  MaterialStatePropertyAll(Colors.purple.shade800)),
+                  MaterialStatePropertyAll(Theme.of(context).primaryColor)),
           onPressed: () {
             configAppRate.changeRate(ratingValue);
             Navigator.of(context).pop();

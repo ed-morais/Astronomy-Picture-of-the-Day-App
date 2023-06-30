@@ -25,12 +25,13 @@ class AstronomyPictureApp extends StatelessWidget {
         )
       ],
       child: Consumer<ConfigAppProvider>(
-          builder: (context, ConfigAppProvider ConfigAppProvider, child) {
+          builder: (context, ConfigAppProvider configAppProvider, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          theme: ConfigAppProvider.isDark
+          theme: configAppProvider.isDark
               ? ThemeData(
-                  colorSchemeSeed: Colors.deepPurpleAccent,
+                  // colorSchemeSeed: Colors.deepPurpleAccent,
+                  primaryColor: Colors.purple.shade800,
                   useMaterial3: true,
 
                   // hintColor: Colors.white,

@@ -107,7 +107,7 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: SpeedDial(
         animatedIcon: AnimatedIcons.menu_close,
         animatedIconTheme: const IconThemeData(color: Colors.white),
-        backgroundColor: Colors.purple.shade800,
+        backgroundColor: Theme.of(context).primaryColor,
         overlayColor: Colors.black,
         overlayOpacity: 0.7,
         spacing: 10,

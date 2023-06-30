@@ -21,11 +21,11 @@ class InfoModal extends StatelessWidget {
               const Text('Name: Edilson Morais Brito'),
               const Text('Email: edilsonmoraisbrito@aluno.uespi'),
               const Text('Registration code: 1078234'),
-              Divider(color: Colors.purple.shade800),
+              Divider(color: Theme.of(context).primaryColor),
               const Text('Francisco Mendes Magalhães'),
               const Text('Email: fmmagalhaesfilho@aluno.uespi'),
               const Text('Registration code: 1078256'),
-              Divider(color: Colors.purple.shade800),
+              Divider(color: Theme.of(context).primaryColor),
               const Text('Name: Tiago da Silva Carvalho'),
               const Text('Email: tdasilvacarvalho@aluno.uespi'),
               const Text('Registration code: 1078249')
@@ -37,7 +37,7 @@ class InfoModal extends StatelessWidget {
         TextButton(
           style: ButtonStyle(
               backgroundColor:
-                  MaterialStatePropertyAll(Colors.purple.shade800)),
+                  MaterialStatePropertyAll(Theme.of(context).primaryColor)),
           onPressed: () => Navigator.pop(context, 'OK'),
           child: const Text(
             'OK',

@@ -78,7 +78,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       TextStyle(color: Colors.white, fontSize: 14),
                 ),
                 child: Slider(
-                  activeColor: Colors.purple.shade800,
+                  activeColor: Theme.of(context).primaryColor,
                   inactiveColor: const Color.fromARGB(255, 81, 81, 81),
                   value: sliderValue.toDouble(),
                   min: 1,
@@ -122,7 +122,7 @@ class _SettingsPageState extends State<SettingsPage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.purple.shade800,
+        backgroundColor: Theme.of(context).primaryColor,
         onPressed: () {
           configApp.changeTheme(switchValue);
           final providerImage =

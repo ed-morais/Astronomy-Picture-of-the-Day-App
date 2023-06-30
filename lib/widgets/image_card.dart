@@ -67,7 +67,7 @@ class ImageCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Icon(Icons.date_range,
-                          size: 25.0, color: Colors.purple.shade800),
+                          size: 25.0, color: Theme.of(context).primaryColor),
                       const SizedBox(width: 5.0),
                       Text(
                         imageData.date,

@@ -139,7 +139,7 @@ class _PictureDetailPageState extends State<PictureDetailPage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.purple.shade800,
+        backgroundColor: Theme.of(context).primaryColor,
         onPressed: () => toggleFavorite(providerImage),
         child: isFavorite
             ? const Icon(
