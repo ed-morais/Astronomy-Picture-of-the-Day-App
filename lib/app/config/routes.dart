@@ -1,6 +1,6 @@
-class RoutesApp {
-  static const home = '/';
-  static const pictureDetailsPage = '/picture-details';
-  static const settings = '/settings';
-  static const favorites = '/favorites';
+enum RoutesApp {
+  home,
+  pictureDetailsPage,
+  settings,
+  saves,
 }

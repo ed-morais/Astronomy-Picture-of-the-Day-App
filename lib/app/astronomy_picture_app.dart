@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../models/picture_data.dart';
-import '../pages/favorites_page.dart';
+import '../pages/saves_page.dart';
 import '../pages/home_page.dart';
 import '../pages/picture_datail_page.dart';
 import '../pages/settings_page.dart';
 import '../providers/image_data_provider.dart';
-import '../providers/rating_app_provider.dart';
+import '../providers/config_app_provider.dart';
 import 'config/routes.dart';
 
 class AstronomyPictureApp extends StatelessWidget {
@@ -20,12 +20,12 @@ class AstronomyPictureApp extends StatelessWidget {
         ChangeNotifierProvider<ImageDataProvider>(
           create: (_) => ImageDataProvider(),
         ),
-        ChangeNotifierProvider<RatingAppProvider>(
-          create: (_) => RatingAppProvider(),
+        ChangeNotifierProvider<ConfigAppProvider>(
+          create: (_) => ConfigAppProvider(),
         )
       ],
-      child: Consumer<RatingAppProvider>(
-          builder: (context, RatingAppProvider ratingAppProvider, child) {
+      child: Consumer<ConfigAppProvider>(
+          builder: (context, ConfigAppProvider ratingAppProvider, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ratingAppProvider.isDark
@@ -46,16 +46,16 @@ class AstronomyPictureApp extends StatelessWidget {
                   brightness: Brightness.light,
                 ),
           title: 'AstronomyPictureApp',
-          initialRoute: RoutesApp.home,
+          initialRoute: RoutesApp.home.name,
           routes: {
-            RoutesApp.home: (context) => const HomePage(),
-            RoutesApp.pictureDetailsPage: (context) {
+            RoutesApp.home.name: (context) => const HomePage(),
+            RoutesApp.pictureDetailsPage.name: (context) {
               final pictuteDetails =
                   ModalRoute.of(context)?.settings.arguments as ImageData;
               return PictureDetailPage(pictuteDetails: pictuteDetails);
             },
-            RoutesApp.settings: (context) => const SettingsPage(),
-            RoutesApp.favorites: (context) => const FavoritesPage(),
+            RoutesApp.settings.name: (context) => const SettingsPage(),
+            RoutesApp.saves.name: (context) => const SavesPage(),
           },
         );
       }),

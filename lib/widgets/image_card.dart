@@ -30,7 +30,7 @@ class ImageCard extends StatelessWidget {
       child: InkWell(
         onTap: () {
           Navigator.of(context).pushNamed(
-            RoutesApp.pictureDetailsPage,
+            RoutesApp.pictureDetailsPage.name,
             arguments: imageData,
           );
         },

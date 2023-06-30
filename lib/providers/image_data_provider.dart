@@ -6,11 +6,12 @@ import '../models/picture_data.dart';
 
 class ImageDataProvider with ChangeNotifier {
   final List<ImageData> _images = [];
-  final List<ImageData> favorites = [];
+  final List<ImageData> _saves = [];
   int _quantityImages = 5;
 
   late int status;
   List<ImageData> get images => _images;
+  List<ImageData> get saves => _saves;
 
   int get getQuantityImages => _quantityImages;
 
@@ -27,32 +28,38 @@ class ImageDataProvider with ChangeNotifier {
   Future<void> fetchImages() async {
     final Uri url = Uri.parse(
         'https://api.nasa.gov/planetary/apod?api_key=$kApiKey&count=$_quantityImages');
+
     final http.Response response =
-        await http.get(url).timeout(const Duration(seconds: 7), onTimeout: () {
-      fetchImages();
+        await http.get(url).timeout(const Duration(seconds: 10), onTimeout: () {
+      // fetchImages();
       return http.Response('Error timeout', 408);
     });
+
     status = response.statusCode;
+
     if (response.statusCode == 200) {
       debugPrint('API VOLTOU COM A RESPOSTA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
       final List<dynamic> body = jsonDecode(response.body);
 
-      final List<Map<String, dynamic>> imageList = List.castFrom(body);
-
-      for (Map<String, dynamic> elem in imageList) {
-        _images.add(ImageData(
-          title: elem['title'] ?? kDefaulPhrase,
-          imageUrl: elem['media_type'] == 'video' ? kDefaultImage : elem['url'],
-          date: formatDate(elem['date']) ?? kDefaulPhrase,
-          explanation: elem['explanation'] ?? kDefaulPhrase,
-          copyright: elem['copyright'] ?? kDefaulPhrase,
-          mediaType: elem['media_type'] ?? kDefaulPhrase,
-          videoUrl: elem['media_type'] == 'video' ? elem['url'] : '',
-        ));
-        notifyListeners();
-      }
+      final List<Map<String, dynamic>> imagesList = List.castFrom(body);
+      populateImages(imagesList);
     } else {
       debugPrint('Error response format ${response.statusCode}');
+    }
+  }
+
+  void populateImages(List<Map<String, dynamic>> imagesList) {
+    for (Map<String, dynamic> elem in imagesList) {
+      _images.add(ImageData(
+        title: elem['title'] ?? kDefaulPhrase,
+        imageUrl: elem['media_type'] == 'video' ? kDefaultImage : elem['url'],
+        date: formatDate(elem['date']) ?? kDefaulPhrase,
+        explanation: elem['explanation'] ?? kDefaulPhrase,
+        copyright: elem['copyright'] ?? kDefaulPhrase,
+        mediaType: elem['media_type'] ?? kDefaulPhrase,
+        videoUrl: elem['media_type'] == 'video' ? elem['url'] : '',
+      ));
+      notifyListeners();
     }
   }
 
@@ -69,13 +76,13 @@ class ImageDataProvider with ChangeNotifier {
     return formattedDate;
   }
 
-  void addFavoritesImages(ImageData image) {
-    favorites.add(image);
+  void addSavesImages(ImageData image) {
+    saves.add(image);
     notifyListeners();
   }
 
-  void removeFavoritesImages(int index) {
-    favorites.removeAt(index);
+  void removeSavedImages(int index) {
+    saves.removeAt(index);
     notifyListeners();
   }
 }

@@ -29,7 +29,7 @@ class _PictureDetailPageState extends State<PictureDetailPage> {
 
   void _isFavorite(providerImage) {
     setState(() {
-      final index = providerImage.favorites
+      final index = providerImage.saves
           .indexWhere((element) => widget.pictuteDetails.date == element.date);
       index == -1 ? isFavorite = false : isFavorite = true;
     });
@@ -37,13 +37,13 @@ class _PictureDetailPageState extends State<PictureDetailPage> {
 
   void toggleFavorite(ImageDataProvider providerImage) {
     setState(() {
-      final index = providerImage.favorites
+      final index = providerImage.saves
           .indexWhere((element) => widget.pictuteDetails.date == element.date);
       if (index == -1) {
-        providerImage.addFavoritesImages(widget.pictuteDetails);
+        providerImage.addSavesImages(widget.pictuteDetails);
         isFavorite = true;
       } else {
-        providerImage.removeFavoritesImages(index);
+        providerImage.removeSavedImages(index);
         isFavorite = false;
       }
     });
@@ -142,8 +142,11 @@ class _PictureDetailPageState extends State<PictureDetailPage> {
         backgroundColor: Colors.purple.shade800,
         onPressed: () => toggleFavorite(providerImage),
         child: isFavorite
-            ? const Icon(Icons.favorite, color: Colors.white,)
-            : const Icon(Icons.favorite_outline, color: Colors.white),
+            ? const Icon(
+                Icons.bookmarks,
+                color: Colors.white,
+              )
+            : const Icon(Icons.bookmarks_outlined, color: Colors.white),
       ),
     );
   }

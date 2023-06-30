@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class RatingAppProvider with ChangeNotifier {
+class ConfigAppProvider with ChangeNotifier {
   double _rate = 0.0;
   bool _isDark = true;
 

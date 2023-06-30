@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/rating_app_provider.dart';
+import '../providers/config_app_provider.dart';
 
 class RateModal extends StatelessWidget {
   const RateModal({
@@ -11,8 +11,8 @@ class RateModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final rateProvider = Provider.of<RatingAppProvider>(context, listen: true);
-    double ratingValue = rateProvider.rate;
+    final configAppRate = Provider.of<ConfigAppProvider>(context, listen: true);
+    double ratingValue = configAppRate.rate;
     return AlertDialog(
       title: const Text(
         'Rate the app!',
@@ -28,7 +28,7 @@ class RateModal extends StatelessWidget {
                 height: 7.0,
               ),
               RatingBar.builder(
-                initialRating: rateProvider.rate,
+                initialRating: configAppRate.rate,
                 minRating: 1,
                 direction: Axis.horizontal,
                 allowHalfRating: true,
@@ -45,8 +45,8 @@ class RateModal extends StatelessWidget {
                 },
               ),
               const SizedBox(
-                        height: 10.0,
-                      ),
+                height: 10.0,
+              ),
               const Text(
                 'Thanks for the support',
                 style: TextStyle(fontSize: 18.0),
@@ -68,7 +68,7 @@ class RateModal extends StatelessWidget {
               backgroundColor:
                   MaterialStatePropertyAll(Colors.purple.shade800)),
           onPressed: () {
-            rateProvider.changeRate(ratingValue);
+            configAppRate.changeRate(ratingValue);
             Navigator.of(context).pop();
           },
           child: const Text(

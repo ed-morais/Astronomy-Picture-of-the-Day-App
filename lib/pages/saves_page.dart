@@ -4,16 +4,16 @@ import 'package:provider/provider.dart';
 import '../providers/image_data_provider.dart';
 import '../widgets/image_card.dart';
 
-class FavoritesPage extends StatelessWidget {
-  const FavoritesPage({super.key});
+class SavesPage extends StatelessWidget {
+  const SavesPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final favorites = Provider.of<ImageDataProvider>(context, listen: true);
+    final savesImage = Provider.of<ImageDataProvider>(context, listen: true);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Favorites'),
+        title: const Text('Saves'),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(15),
@@ -22,11 +22,11 @@ class FavoritesPage extends StatelessWidget {
       ),
       body: ListView.builder(
         shrinkWrap: true,
-        itemCount: favorites.favorites.length,
+        itemCount: savesImage.saves.length,
         itemBuilder: (context, index) => ImageCard(
-          imageData: favorites.favorites[index],
+          imageData: savesImage.saves[index],
           index: index + 1,
-          length: favorites.favorites.length,
+          length: savesImage.saves.length,
         ),
       ),
     );
