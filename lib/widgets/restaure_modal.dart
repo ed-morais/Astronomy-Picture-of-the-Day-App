@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/config_app_provider.dart';
+import '../providers/image_data_provider.dart';
 
 class RestaureModal extends StatelessWidget {
+  // provider image
   const RestaureModal({
     super.key,
   });
@@ -31,7 +36,8 @@ class RestaureModal extends StatelessWidget {
           onPressed: () => Navigator.pop(context, 'Cancel'),
           child: Text(
             'Cancel',
-            style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 15.0),
+            style: TextStyle(
+                color: Theme.of(context).primaryColor, fontSize: 15.0),
           ),
         ),
         TextButton(
@@ -39,9 +45,20 @@ class RestaureModal extends StatelessWidget {
               backgroundColor:
                   MaterialStatePropertyAll(Theme.of(context).primaryColor)),
           onPressed: () {
-            
+            final providerImage =
+                Provider.of<ImageDataProvider>(context, listen: false);
+            final configApp =
+                Provider.of<ConfigAppProvider>(context, listen: false);
+
+            providerImage.quantityImages = 5;
+            providerImage.clearList();
+            providerImage.fetchImages();
+            configApp.changeTheme(true);
+            configApp.changeColor(Colors.purple.shade800);
+
             Navigator.pop(context, 'Confirm');
-          }, 
+            Navigator.of(context).pop();
+          },
           // onPressed: () {
           //   configApp.changeTheme(switchValue);
 
@@ -50,7 +67,6 @@ class RestaureModal extends StatelessWidget {
           //   providerImage.quantityImages = 5;
           //   providerImage.clearList();
           //   providerImage.fetchImages();
-          //   Navigator.of(context).pop();
           // },
           child: const Text(
             'Confirm',
