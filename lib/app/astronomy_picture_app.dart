@@ -31,7 +31,7 @@ class AstronomyPictureApp extends StatelessWidget {
           theme: configAppProvider.isDark
               ? ThemeData(
                   // colorSchemeSeed: Colors.deepPurpleAccent,
-                  primaryColor: Colors.purple.shade800,
+                  primaryColor: configAppProvider.primaryColor,
                   useMaterial3: true,
 
                   // hintColor: Colors.white,
@@ -40,7 +40,7 @@ class AstronomyPictureApp extends StatelessWidget {
                   brightness: Brightness.dark,
                 )
               : ThemeData(
-                  colorSchemeSeed: Colors.deepPurpleAccent,
+                  colorSchemeSeed: configAppProvider.primaryColor,
                   useMaterial3: true,
                   hintColor: Colors.black,
                   // cardColor: Colors.deepPurple.shade100

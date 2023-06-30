@@ -20,15 +20,20 @@ class SavesPage extends StatelessWidget {
           ),
         ),
       ),
-      body: ListView.builder(
-        shrinkWrap: true,
-        itemCount: savesImage.saves.length,
-        itemBuilder: (context, index) => ImageCard(
-          imageData: savesImage.saves[index],
-          index: index + 1,
-          length: savesImage.saves.length,
-        ),
-      ),
+      body: savesImage.saves.isEmpty
+          ? Image.network(
+              'https://neilpatel.com/wp-content/uploads/2019/05/pagina-de-error-404.jpeg',
+              fit: BoxFit.cover,
+            )
+          : ListView.builder(
+              shrinkWrap: true,
+              itemCount: savesImage.saves.length,
+              itemBuilder: (context, index) => ImageCard(
+                imageData: savesImage.saves[index],
+                index: index + 1,
+                length: savesImage.saves.length,
+              ),
+            ),
     );
   }
 }

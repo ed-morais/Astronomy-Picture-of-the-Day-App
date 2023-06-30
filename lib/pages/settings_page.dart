@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:provider/provider.dart';
 import '../providers/config_app_provider.dart';
+import '../widgets/color_picker_modal.dart';
 import '../widgets/config_card.dart';
 import '../widgets/rate_modal.dart';
 
@@ -43,7 +45,9 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     Provider.of<ImageDataProvider>(context, listen: true);
-    final configApp = Provider.of<ConfigAppProvider>(context, listen: false);
+    final configApp = Provider.of<ConfigAppProvider>(context, listen: true);
+    Color mycolor = configApp.primaryColor;
+    // debugPrint(mycolor.toString());
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -108,6 +112,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   Switch(
                     thumbIcon: thumbIcon,
                     value: switchValue,
+                    activeColor: Theme.of(context).primaryColor,
                     onChanged: (bool value) {
                       setState(() {
                         switchValue = value;
@@ -118,6 +123,26 @@ class _SettingsPageState extends State<SettingsPage> {
                 ],
               ),
             ),
+            ConfigCard(
+              title: 'Appearance',
+              body: ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return const ColorPickerDialog();
+                      });
+                },
+                style: ButtonStyle(
+                  backgroundColor: MaterialStatePropertyAll(
+                      Theme.of(context).secondaryHeaderColor),
+                ),
+                child: const Text(
+                  "Select color",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
           ],
         ),
       ),
@@ -125,6 +150,7 @@ class _SettingsPageState extends State<SettingsPage> {
         backgroundColor: Theme.of(context).primaryColor,
         onPressed: () {
           configApp.changeTheme(switchValue);
+
           final providerImage =
               Provider.of<ImageDataProvider>(context, listen: false);
           providerImage.quantityImages = sliderValue;

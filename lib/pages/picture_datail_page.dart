@@ -77,10 +77,10 @@ class _PictureDetailPageState extends State<PictureDetailPage> {
               elevation: 10.0,
               child: ClipPath(
                 child: Container(
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     border: Border(
                       right: BorderSide(
-                        color: Colors.purple,
+                        color: Theme.of(context).primaryColor,
                         width: 5,
                       ),
                     ),
@@ -104,7 +104,7 @@ class _PictureDetailPageState extends State<PictureDetailPage> {
                           preDataTextStyle:
                               const TextStyle(fontWeight: FontWeight.w500),
                           style: TextStyle(color: Theme.of(context).hintColor),
-                          colorClickableText: Colors.purple,
+                          colorClickableText: Theme.of(context).primaryColor,
                           trimMode: TrimMode.Line,
                           trimCollapsedText: 'Show more',
                           trimExpandedText: ' show less',

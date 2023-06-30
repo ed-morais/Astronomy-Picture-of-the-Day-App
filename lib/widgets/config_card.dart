@@ -18,10 +18,14 @@ class ConfigCard extends StatelessWidget {
           height: 130,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Text(
                 title,
-                style: const TextStyle(fontSize: 18.0),
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 18.0,
+                ),
               ),
               const SizedBox(
                 width: 15.0,
