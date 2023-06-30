@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:provider/provider.dart';
 import '../providers/config_app_provider.dart';
 import '../widgets/color_picker_modal.dart';
@@ -126,7 +125,7 @@ class _SettingsPageState extends State<SettingsPage> {
             ConfigCard(
               title: 'Palette Details',
               body: Container(
-                padding: EdgeInsets.symmetric(horizontal: 60),
+                padding: const EdgeInsets.symmetric(horizontal: 60),
                 child: ElevatedButton(
                   onPressed: () {
                     showDialog(
