@@ -88,8 +88,10 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: images.isEmpty
-          ? const Center(
-              child: CircularProgressIndicator(),
+          ? Center(
+              child: CircularProgressIndicator(
+                color: Theme.of(context).primaryColor,
+              ),
             )
           : RefreshIndicator(
               onRefresh: reloadRequest,
