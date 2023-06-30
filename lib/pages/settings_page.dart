@@ -190,7 +190,7 @@ class _SettingsPageState extends State<SettingsPage> {
           providerImage.clearList();
           await providerImage.fetchImages();
 
-          if (providerImage.status != 200) {
+          if (providerImage.status != 200 && context.mounted) {
             debugPrint('error');
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
