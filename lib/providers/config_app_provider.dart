@@ -20,7 +20,6 @@ class ConfigAppProvider with ChangeNotifier {
   }
 
   void changeColor(Color color) {
-    // debugPrint('mudou');
     _primaryColor = color;
     notifyListeners();
   }

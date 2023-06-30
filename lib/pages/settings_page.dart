@@ -45,8 +45,6 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     Provider.of<ImageDataProvider>(context, listen: true);
     final configApp = Provider.of<ConfigAppProvider>(context, listen: true);
-    // Color mycolor = configApp.primaryColor;
-    // debugPrint(mycolor.toString());
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -125,7 +123,7 @@ class _SettingsPageState extends State<SettingsPage> {
             ConfigCard(
               title: 'Palette Details',
               body: Container(
-                padding: EdgeInsets.symmetric(horizontal: 60),
+                padding: const EdgeInsets.symmetric(horizontal: 60),
                 child: ElevatedButton(
                   onPressed: () {
                     showDialog(

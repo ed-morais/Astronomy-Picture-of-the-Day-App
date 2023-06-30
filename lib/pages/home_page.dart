@@ -1,12 +1,10 @@
-import 'package:astronomy_picture_app/app/config/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
 import '../providers/image_data_provider.dart';
+import '../widgets/animated_button.dart';
 import '../widgets/image_card.dart';
-import '../widgets/info_modal.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,6 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  Widget indicator = const CircularProgressIndicator();
   @override
   void initState() {
     loadRequest();
@@ -25,23 +24,30 @@ class _HomePageState extends State<HomePage> {
   loadRequest() async {
     final provider = Provider.of<ImageDataProvider>(context, listen: false);
     await provider.fetchImages();
-    if (provider.status != 200 && provider.status != 408) {
-      debugPrint('Error >>>> : ${provider.status}');
+    if (provider.status != 200) {
       alertError();
     }
   }
 
   Future<void> reloadRequest() async {
+    setState(() {
+      indicator = const CircularProgressIndicator();
+    });
     final provider = Provider.of<ImageDataProvider>(context, listen: false);
     provider.clearList();
     await provider.fetchImages();
-    if (provider.status != 200 && provider.status != 408) {
-      debugPrint('Error >>>>> : ${provider.status}');
+    if (provider.status != 200) {
       alertError();
     }
   }
 
   void alertError() {
+    setState(() {
+      indicator = const Icon(
+        Icons.error_rounded,
+        size: 80.0,
+      );
+    });
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: ListTile(
         leading: const Icon(
@@ -55,10 +61,10 @@ class _HomePageState extends State<HomePage> {
       ),
       duration: const Duration(seconds: 5),
       action: SnackBarAction(
+        textColor: Colors.white,
+        backgroundColor: Theme.of(context).primaryColor,
         label: 'try again',
-        onPressed: () {
-          reloadRequest();
-        },
+        onPressed: () => reloadRequest(),
       ),
     ));
   }
@@ -88,11 +94,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: images.isEmpty
-          ? Center(
-              child: CircularProgressIndicator(
-                color: Theme.of(context).primaryColor,
-              ),
-            )
+          ? Center(child: indicator)
           : RefreshIndicator(
               color: Theme.of(context).primaryColor,
               onRefresh: reloadRequest,
@@ -106,47 +108,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
-      floatingActionButton: SpeedDial(
-        animatedIcon: AnimatedIcons.menu_close,
-        animatedIconTheme: const IconThemeData(color: Colors.white),
-        backgroundColor: Theme.of(context).primaryColor,
-        overlayColor: Colors.black,
-        overlayOpacity: 0.7,
-        spacing: 10,
-        spaceBetweenChildren: 10,
-        children: [
-          SpeedDialChild(
-            child: const Icon(Icons.group),
-            label: 'Information',
-            // backgroundColor: Colors.purple.shade700,
-            onTap: () {
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return const InfoModal();
-                },
-              );
-            },
-          ),
-          SpeedDialChild(
-            child: const Icon(Icons.settings),
-            label: 'Settings',
-            // backgroundColor: Colors.purple.shade700,
-            onTap: () {
-              Navigator.of(context).pushNamed(RoutesApp.settings.name);
-            },
-          ),
-          SpeedDialChild(
-            child: const Icon(Icons.bookmarks),
-            label: 'Saves',
-            // backgroundColor: Colors.purple.shade700,
-            onTap: () {
-              Navigator.of(context).pushNamed(RoutesApp.saves.name);
-            },
-          ),
-        ],
-      ),
+      floatingActionButton: const AnimatedButton(),
     );
   }
 }

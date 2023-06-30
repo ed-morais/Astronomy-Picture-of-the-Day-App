@@ -33,13 +33,15 @@ class AstronomyPictureApp extends StatelessWidget {
                   primaryColor: configAppProvider.primaryColor,
                   useMaterial3: true,
                   brightness: Brightness.dark,
-                )
+                  progressIndicatorTheme: ProgressIndicatorThemeData(
+                      color: configAppProvider.primaryColor))
               : ThemeData(
                   colorSchemeSeed: configAppProvider.primaryColor,
                   useMaterial3: true,
                   hintColor: Colors.black,
                   brightness: Brightness.light,
-                ),
+                  progressIndicatorTheme: ProgressIndicatorThemeData(
+                      color: configAppProvider.primaryColor)),
           title: 'AstronomyPictureApp',
           initialRoute: RoutesApp.home.name,
           routes: {
