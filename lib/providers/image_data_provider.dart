@@ -35,7 +35,6 @@ class ImageDataProvider with ChangeNotifier {
     status = response.statusCode;
 
     if (response.statusCode == 200) {
-      debugPrint('API VOLTOU COM A RESPOSTA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
       final List<dynamic> body = jsonDecode(response.body);
 
       final List<Map<String, dynamic>> imagesList = List.castFrom(body);

@@ -28,9 +28,8 @@ class _ColorPickerDialogState extends State<ColorPickerDialog> {
       title: const Text('Pick a color!'),
       content: SingleChildScrollView(
         child: BlockPicker(
-          pickerColor: pickerColor, //default color
+          pickerColor: pickerColor,
           onColorChanged: (Color color) {
-            //on color picked
             setState(() {
               pickerColor = color;
             });

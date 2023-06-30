@@ -40,8 +40,6 @@ class RateModal extends StatelessWidget {
                 ),
                 onRatingUpdate: (rating) {
                   ratingValue = rating;
-
-                  // print(rating);
                 },
               ),
               const SizedBox(

@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        // centerTitle: true,
+        centerTitle: true,
         title: Text(
           'Cosmic Explorer',
           style: GoogleFonts.getFont('Play'),
