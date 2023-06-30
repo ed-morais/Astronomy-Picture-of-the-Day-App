@@ -125,7 +125,7 @@ class _SettingsPageState extends State<SettingsPage> {
             ConfigCard(
               title: 'Palette Details',
               body: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 60),
+                padding: EdgeInsets.symmetric(horizontal: 60),
                 child: ElevatedButton(
                   onPressed: () {
                     showDialog(

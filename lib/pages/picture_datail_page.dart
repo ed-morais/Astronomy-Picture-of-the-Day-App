@@ -130,8 +130,16 @@ class _PictureDetailPageState extends State<PictureDetailPage> {
                           await launchUrl(url);
                         }
                       },
-                      icon: const Icon(Icons.play_circle),
-                      label: const Text("Play Video "),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStatePropertyAll(
+                            Theme.of(context).primaryColor),
+                      ),
+                      icon: const Icon(Icons.play_circle,
+                        color: Colors.white,
+                      ),
+                      label: const Text("Play Video ",
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
                   )
                 : const Text(''),
