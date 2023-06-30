@@ -126,19 +126,19 @@ class _HomePageState extends State<HomePage> {
             },
           ),
           SpeedDialChild(
-            child: const Icon(Icons.star),
-            label: 'Favorites',
-            // backgroundColor: Colors.purple.shade700,
-            onTap: () {
-              Navigator.of(context).pushNamed(RoutesApp.favorites);
-            },
-          ),
-          SpeedDialChild(
             child: const Icon(Icons.settings),
             label: 'Settings',
             // backgroundColor: Colors.purple.shade700,
             onTap: () {
               Navigator.of(context).pushNamed(RoutesApp.settings);
+            },
+          ),
+          SpeedDialChild(
+            child: const Icon(Icons.bookmarks),
+            label: 'Saves',
+            // backgroundColor: Colors.purple.shade700,
+            onTap: () {
+              Navigator.of(context).pushNamed(RoutesApp.saves);
             },
           ),
         ],

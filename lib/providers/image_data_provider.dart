@@ -6,7 +6,7 @@ import '../models/picture_data.dart';
 
 class ImageDataProvider with ChangeNotifier {
   final List<ImageData> _images = [];
-  final List<ImageData> favorites = [];
+  final List<ImageData> saves = [];
   int _quantityImages = 5;
 
   late int status;
@@ -69,13 +69,13 @@ class ImageDataProvider with ChangeNotifier {
     return formattedDate;
   }
 
-  void addFavoritesImages(ImageData image) {
-    favorites.add(image);
+  void addSavesImages(ImageData image) {
+    saves.add(image);
     notifyListeners();
   }
 
-  void removeFavoritesImages(int index) {
-    favorites.removeAt(index);
+  void removeSavesImages(int index) {
+    saves.removeAt(index);
     notifyListeners();
   }
 }
