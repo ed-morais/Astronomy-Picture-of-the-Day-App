@@ -94,6 +94,7 @@ class _HomePageState extends State<HomePage> {
               ),
             )
           : RefreshIndicator(
+              color: Theme.of(context).primaryColor,
               onRefresh: reloadRequest,
               child: ListView.builder(
                 shrinkWrap: true,
