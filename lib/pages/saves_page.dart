@@ -22,11 +22,11 @@ class SavesPage extends StatelessWidget {
       ),
       body: savesImage.saves.isEmpty
           ? Center(
-              child: Container(
-                  child: const Icon(
+              child: Icon(
                 Icons.now_wallpaper_outlined,
                 size: 200.0,
-              )),
+                color: Colors.black.withOpacity(0.4),
+              ),
             )
           : ListView.builder(
               shrinkWrap: true,

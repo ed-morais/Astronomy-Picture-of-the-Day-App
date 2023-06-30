@@ -30,20 +30,14 @@ class AstronomyPictureApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: configAppProvider.isDark
               ? ThemeData(
-                  // colorSchemeSeed: Colors.deepPurpleAccent,
                   primaryColor: configAppProvider.primaryColor,
                   useMaterial3: true,
-
-                  // hintColor: Colors.white,
-
-                  // cardColor: Colors.deepPurple.shade100
                   brightness: Brightness.dark,
                 )
               : ThemeData(
                   colorSchemeSeed: configAppProvider.primaryColor,
                   useMaterial3: true,
                   hintColor: Colors.black,
-                  // cardColor: Colors.deepPurple.shade100
                   brightness: Brightness.light,
                 ),
           title: 'AstronomyPictureApp',
