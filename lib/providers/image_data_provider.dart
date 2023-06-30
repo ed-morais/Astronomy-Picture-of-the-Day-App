@@ -8,11 +8,10 @@ class ImageDataProvider with ChangeNotifier {
   final List<ImageData> _images = [];
   final List<ImageData> _saves = [];
   int _quantityImages = 5;
-
   late int status;
+
   List<ImageData> get images => _images;
   List<ImageData> get saves => _saves;
-
   int get getQuantityImages => _quantityImages;
 
   set quantityImages(int quantityImages) {
@@ -26,8 +25,7 @@ class ImageDataProvider with ChangeNotifier {
   }
 
   Future<void> fetchImages() async {
-    final Uri url = Uri.parse(
-        'https://api.nasa.gov/planetary/apod?api_key=$kApiKey&count=$_quantityImages');
+    final Uri url = Uri.parse('$kBaseUrl$_quantityImages');
 
     final http.Response response =
         await http.get(url).timeout(const Duration(seconds: 12), onTimeout: () {
@@ -43,6 +41,7 @@ class ImageDataProvider with ChangeNotifier {
       final List<Map<String, dynamic>> imagesList = List.castFrom(body);
       populateImages(imagesList);
     } else {
+      http.Response('Error', status);
       debugPrint('Error response format ${response.statusCode}');
     }
   }

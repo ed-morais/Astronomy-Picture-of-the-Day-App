@@ -17,11 +17,11 @@ class _HomePageState extends State<HomePage> {
   Widget indicator = const CircularProgressIndicator();
   @override
   void initState() {
-    loadRequest();
+    _loadRequest();
     super.initState();
   }
 
-  loadRequest() async {
+  _loadRequest() async {
     final provider = Provider.of<ImageDataProvider>(context, listen: false);
     await provider.fetchImages();
     if (provider.status != 200) {
@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  Future<void> reloadRequest() async {
+  Future<void> _reloadRequest() async {
     setState(() {
       indicator = const CircularProgressIndicator();
     });
@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> {
         textColor: Colors.white,
         backgroundColor: Theme.of(context).primaryColor,
         label: 'try again',
-        onPressed: () => reloadRequest(),
+        onPressed: () {},
       ),
     ));
   }
@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage> {
         ),
         actions: [
           IconButton(
-            onPressed: () => reloadRequest(),
+            onPressed: () => _reloadRequest(),
             icon: const Icon(Icons.refresh_rounded),
           )
         ],
@@ -97,7 +97,7 @@ class _HomePageState extends State<HomePage> {
           ? Center(child: indicator)
           : RefreshIndicator(
               color: Theme.of(context).primaryColor,
-              onRefresh: reloadRequest,
+              onRefresh: _reloadRequest,
               child: ListView.builder(
                 shrinkWrap: true,
                 itemCount: images.length,

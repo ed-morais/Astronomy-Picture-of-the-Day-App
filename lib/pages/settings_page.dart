@@ -17,6 +17,10 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
   late int sliderValue;
   late bool switchValue;
+  Widget linearprogress = const SizedBox(
+    height: 0.0,
+    width: 0.0,
+  );
   final MaterialStateProperty<Icon?> thumbIcon =
       MaterialStateProperty.resolveWith<Icon?>(
     (Set<MaterialState> states) {
@@ -71,6 +75,7 @@ class _SettingsPageState extends State<SettingsPage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            linearprogress,
             ConfigCard(
               title: 'Number of images you want to show',
               body: SliderTheme(
@@ -148,15 +153,33 @@ class _SettingsPageState extends State<SettingsPage> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Theme.of(context).primaryColor,
-        onPressed: () {
-          configApp.changeTheme(switchValue);
+        onPressed: () async {
+          setState(() {
+            linearprogress = const LinearProgressIndicator();
+          });
 
           final providerImage =
               Provider.of<ImageDataProvider>(context, listen: false);
           providerImage.quantityImages = sliderValue;
           providerImage.clearList();
-          providerImage.fetchImages();
-          Navigator.of(context).pop();
+          await providerImage.fetchImages();
+
+          if (providerImage.status != 200) {
+            debugPrint('error');
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('An error occurred.'),
+                duration: Duration(seconds: 3),
+              ),
+            );
+            setState(() {
+              linearprogress = const SizedBox();
+            });
+          } else {
+            if (context.mounted) {
+              Navigator.of(context).pop();
+            }
+          }
         },
         child: const Icon(
           Icons.save,
