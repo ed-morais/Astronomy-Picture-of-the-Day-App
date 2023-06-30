@@ -21,9 +21,12 @@ class SavesPage extends StatelessWidget {
         ),
       ),
       body: savesImage.saves.isEmpty
-          ? Image.network(
-              'https://neilpatel.com/wp-content/uploads/2019/05/pagina-de-error-404.jpeg',
-              fit: BoxFit.cover,
+          ? Center(
+              child: Container(
+                  child: const Icon(
+                Icons.now_wallpaper_outlined,
+                size: 200.0,
+              )),
             )
           : ListView.builder(
               shrinkWrap: true,
