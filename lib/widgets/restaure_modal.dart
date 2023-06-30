@@ -47,7 +47,7 @@ class RestaureModal extends StatelessWidget {
 
           //   final providerImage =
           //       Provider.of<ImageDataProvider>(context, listen: false);
-          //   providerImage.quantityImages = sliderValue;
+          //   providerImage.quantityImages = 5;
           //   providerImage.clearList();
           //   providerImage.fetchImages();
           //   Navigator.of(context).pop();
