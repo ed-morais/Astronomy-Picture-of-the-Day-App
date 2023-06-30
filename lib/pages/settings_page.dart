@@ -124,22 +124,25 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
             ConfigCard(
-              title: 'Appearance',
-              body: ElevatedButton(
-                onPressed: () {
-                  showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return const ColorPickerDialog();
-                      });
-                },
-                style: ButtonStyle(
-                  backgroundColor: MaterialStatePropertyAll(
-                      Theme.of(context).secondaryHeaderColor),
-                ),
-                child: const Text(
-                  "Select color",
-                  style: TextStyle(color: Colors.white),
+              title: 'Details Palette',
+              body: Container(
+                padding: EdgeInsets.symmetric(horizontal: 60),
+                child: ElevatedButton(
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return const ColorPickerDialog();
+                        });
+                  },
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStatePropertyAll(
+                        Theme.of(context).primaryColor),
+                  ),
+                  child: const Text(
+                    "Select color",
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
               ),
             ),
