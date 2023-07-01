@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> {
         textColor: Colors.white,
         backgroundColor: Theme.of(context).primaryColor,
         label: 'try again',
-        onPressed: () {},
+        onPressed: () => _reloadRequest(),
       ),
     ));
   }
