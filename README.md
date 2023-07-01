@@ -3,11 +3,10 @@
 This is a Flutter application that fetches and displays beautiful images from the Astronomy Picture of the Day API. The main screen of the app displays a set of images provided by the API.
 
 ## Contributors
-Edilson Morais Brito  
 
-Tiago da Silva Carvalho
-
-Francisco Mendes
+- [Edilson Morais Brito](https://github.com/ed-morais)
+- [Tiago Silva Carvalho](https://github.com/TSCTiago)
+- [Francisco Mendes Magalhães Filho](https://github.com/FranciscoMends)
 
 ## Features
 
